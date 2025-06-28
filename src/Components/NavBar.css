@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+}
+img{
+    cursor: pointer;
+}
+
+
+nav{
+    padding: 10px 2%;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+.flex-div{
+    display: flex;
+    align-items: center;
+}
+
+.nav-left .menu-icon{
+    width: 22px;
+    margin-right: 25px;
+}
+.nav-left .yt_logo{
+    width: 180px;
+    height: 120px;
+}
+.middle_part .search-box{
+    border: 1px solid #ccc;
+    margin-right: 15px;
+    padding: 7px 8px;
+    border-radius: 25px;
+    display: flex;
+    
+    flex-direction: row;
+}
+.middle_part .search-icon{
+    width: 30px;
+    border-left: 1px solid black;
+    padding-left: 5px;
+}
+.middle_part .search-box input{
+    width: 450px;
+    border: 0;
+    outline: 0;
+    background-color: transparent; 
+}
+.middle_part .mic-logo{
+    width: 40px;
+    background-color: rgb(206, 198, 198);
+    border-radius: 100%;
+    padding: 5px;
+}
+
+.nav-right img {
+    width: 25px;
+    margin-right: 25px;
+}
+.nav-right button{
+    margin-right: 25px;
+    border: 0;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.nav-right .signin-btn{
+    background-color: white;
+    color: red;
+    font-weight: 700;
+}
