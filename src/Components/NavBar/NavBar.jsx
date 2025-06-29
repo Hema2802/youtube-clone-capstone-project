@@ -1,19 +1,19 @@
 
 import React from "react";
 import "./NavBar.css";
-import menu from '../assets/menu.png'
-import search_icon from '../assets/search_icon.png'
-import mic_icon from '../assets/mic_icon.png'
-import bell_gif from '../assets/bell_gif.gif'
-import profile_icon from '../assets/profile_icon.png'
+import menu from '../../assets/menu.png'
+import search_icon from '../../assets/search_icon.png'
+import mic_icon from '../../assets/mic_icon.png'
+import bell_gif from '../../assets/bell_gif.gif'
+import profile_icon from '../../assets/profile_icon.png'
 
-function NavBar(){
+function NavBar({setSideBar}){
     return(
         <>
             <nav className="flex-div">
             {/* left side  */}
                 <div className="nav-left flex-div">
-                     <img src={menu} alt="menu-icon" className="menu-icon"/>
+                     <img src={menu} alt="menu-icon" className="menu-icon" onClick={()=>setSideBar(prev=>prev===false?true:false)}/>
                      <img className="yt_logo" src="https://logowik.com/content/uploads/images/youtube-premium8029.logowik.com.webp" alt="youtube-icon" />
                 </div>
              
