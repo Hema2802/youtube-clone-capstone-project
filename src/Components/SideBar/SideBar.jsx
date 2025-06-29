@@ -7,6 +7,8 @@ import subscription_icon from '../../assets/subscription_icon.png'
 import youtube_music from '../../assets/youtube_music.png'
 import download from '../../assets/download.png'
 import yt_profile from '../../assets/yt_profile.png'
+import yt_kids from '../../assets/yt_kids.png'
+import yt_live from '../../assets/yt_live.png'
 
 
 function SideBar({sideBar}){
@@ -31,8 +33,16 @@ function SideBar({sideBar}){
                 </div>
 
                 <div className="side-links">
-                    <img src={yt_profile} alt="Home icon "/> <p>You</p>
+                    <img src={yt_kids} alt="Home icon "/> <p>Kids</p>
                 </div>
+
+                <div className="side-links">
+                    <img src={yt_live} alt="Home icon "/> <p>Live</p>
+                </div>
+
+                <div className="side-links">
+                    <img src={yt_profile} alt="Home icon "/> <p>You</p>
+                </div> 
 
                 <div className="side-links">
                     <img src={download} alt="Home icon "/> <p>Downloads</p>

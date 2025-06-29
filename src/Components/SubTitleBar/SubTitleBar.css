@@ -1,0 +1,59 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.subBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 10px;
+  margin-left: 150px;
+}
+
+.subtitles {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+}
+
+.subtitles::-webkit-scrollbar {
+  display: none; 
+}
+
+
+.sub-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: rgb(225, 222, 222);
+    border-radius: 15px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sub-btn.active {
+    background-color: rgb(103, 101, 101);
+    color: white;
+    font-weight: 500;
+}
+
+.scroll-btn {
+  background-color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.scroll-btn.left {
+  margin-right: 10px;
+}
+
+.scroll-btn.right {
+  margin-left: 10px;
+}
