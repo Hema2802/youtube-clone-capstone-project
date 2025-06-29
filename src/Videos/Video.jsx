@@ -6,7 +6,10 @@ import "./Video.css"
 function Video(){
     return(
         <>
-        
+           <div className="play-container">
+
+            
+           </div>
         
         
         </>

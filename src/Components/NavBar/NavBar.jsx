@@ -6,7 +6,7 @@ import search_icon from '../../assets/search_icon.png'
 import mic_icon from '../../assets/mic_icon.png'
 import bell_gif from '../../assets/bell_gif.gif'
 import profile_icon from '../../assets/profile_icon.png'
-import SubTitleBar from "../SubTitleBar/SubTitleBar";
+
 
 function NavBar({setSideBar}){
     return(
@@ -43,7 +43,7 @@ function NavBar({setSideBar}){
 
             </nav>
 
-            <SubTitleBar/>
+           
         
         </>
     )
