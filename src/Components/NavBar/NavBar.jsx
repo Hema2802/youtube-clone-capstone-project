@@ -9,6 +9,7 @@ import profile_icon from '../../assets/profile_icon.png'
 
 
 function NavBar({setSideBar}){
+    const notificationCount=24;
     return(
         <>
             <nav className="flex-div">
@@ -34,7 +35,13 @@ function NavBar({setSideBar}){
 
              <div className="nav-right flex-div">
                   <button>╋ Create </button>
-                  <img src={bell_gif} alt="notification bell"/>
+                  
+                  <div className="notification-bell">
+                       <img src={bell_gif} alt="notification bell" />
+                       {notificationCount > 0 && (
+                           <span className="notification-badge">{notificationCount}+</span>
+                        )}
+                  </div>
                   <button className="signin-btn">Sign In</button>
                   <img src={profile_icon} alt="profile logo"/>
 
