@@ -40,3 +40,50 @@ export function fetchVideos(req,res){
         res.status(401).json({message:"Internal server error" || err.message})
     })
 }
+
+
+// 3) Update product details
+
+export async function updateVideoData(req,res){
+    // try and catch method
+     try{
+    //    find id of the product
+        const _id= req.params.id;
+        //  update
+        let updatedData = await videoModel.findByIdAndUpdate( _id, req.body,{new:true});
+        // if there is no product to update in DB
+        if(!updatedData){
+            return res.status(404).json({message:"No product's data is found in dataBase🚧"})
+        }
+
+        return res.status(201).json({"Updated data":updatedData})
+     } 
+    //  common error 
+     catch(err){
+        return res.status(500).json({err:"Something went wrong while try to update product's data list from DB ⚠️"})
+     }
+    
+}
+
+// 4)delete the product
+
+export async function deleteVideo(req,res){
+    // try and catch method
+     try{
+    //    find id of the product
+        const _id= req.params.id;
+        //  delete
+        let deletedData = await videoModel.findByIdAndDelete( _id);
+        // if there is no product to delete in DB
+        if(!deletedData){
+            return res.status(404).json({message:"No product's data is found in dataBase🚧"})
+        }
+
+        return res.status(201).json({"Deleted Successfully":deletedData})
+     } 
+    //  common error 
+     catch(err){
+        return res.status(500).json({err:"Something went wrong while try to delete product's data from DB ⚠️"})
+     }
+    
+}

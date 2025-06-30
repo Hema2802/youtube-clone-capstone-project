@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
 import './SubTitleBar.css';
 
-function SubTitleBar() {
+function SubTitleBar({category,setCategory}) {
     const scrollRef = useRef();
-    const [activeIndex, setActiveIndex] = useState(0); // Track which subtitle is selected
+    const [activeIndex, setActiveIndex] = useState(0); 
 
     const scrollLeft = () => {
         scrollRef.current.scrollBy({
@@ -19,7 +19,7 @@ function SubTitleBar() {
         });
     };
 
-    const titles = ["All", "Tamil Cinema", "Popular Songs", "Gaming", "News", "Comedy", "Movies", "Programming", "Television Dramas", "AI"];
+    const titles = ["All", "Popular Songs", "Gaming", "News", "Comedy", "Movies", "Programming", "Television Dramas", "AI"];
 
     return (
         <div className="subBar">
@@ -29,7 +29,10 @@ function SubTitleBar() {
                     <div
                         className={`sub-btn ${activeIndex === index ? 'active' : ''}`}
                         key={index}
-                        onClick={() => setActiveIndex(index)}
+                        onClick={() => {
+                            setActiveIndex(index);
+                            setCategory(title)
+                        }}
                     >
                         <p>{title}</p>
                     </div>

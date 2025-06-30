@@ -2,9 +2,12 @@
 import express from "express";
 import mongoose from "mongoose";
 import { routes } from "./Routes/Video.routes.js";
+import cors from 'cors'
 
 const app=new express();
 app.use(express.json())
+app.use(cors());
+
 const PORT =3000;
 app.listen(PORT,()=>{
     console.log(`Server is running successfully on PORT ${PORT} 🚀`)
