@@ -7,26 +7,30 @@ import share from '../../assets/share.png';
 import save_icon from '../../assets/save_icon.png';
 import women_profile from '../../assets/women_profile.png';
 import common_profile from '../../assets/common_profile.png';
+import edit_icon from '../../assets/edit_icon.png'
+import delete_icon from '../../assets/delete_icon.png'
 
 function PlayVideo() {
     const [comments, setComments] = useState([
         { id: 1, name: "Jennifer", time: "1 day ago", text: "This video was super helpful!", likes: 233 },
     ]);
     const [newComment, setNewComment] = useState("");
+    const [newName, setNewName] = useState("");
     const [editingId, setEditingId] = useState(null);
     const [editedText, setEditedText] = useState("");
 
     const addComment = () => {
-        if (!newComment.trim()) return;
+         if (!newName.trim() || !newComment.trim()) return;
         const newComm = {
             id: Date.now(),
-            name: "User", // You can later make this dynamic
+            name: newName,
             time: "Just now",
             text: newComment,
             likes: 0
         };
         setComments([newComm, ...comments]);
         setNewComment("");
+        setNewName("");
     };
 
     const deleteComment = (id) => {
@@ -85,14 +89,21 @@ function PlayVideo() {
             </div>
 
             {/* Add new comment */}
-            <div className="add-comment">
+             <div className="add-comment">
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    value={newName}
+                    onChange={(e) => setNewName(e.target.value)}
+                />
                 <textarea
                     placeholder="Add a comment..."
                     value={newComment}
                     onChange={(e) => setNewComment(e.target.value)}
                 />
                 <button onClick={addComment}>Post</button>
-            </div>
+            </div><br/>
+            <hr/>
 
             {/* Comments */}
             {comments.map((comment) => (
@@ -101,16 +112,22 @@ function PlayVideo() {
                     <div>
                         <h3>{comment.name} <span>{comment.time}</span></h3>
                         {editingId === comment.id ? (
+
                             <>
-                                <textarea
+                            <div className="textarea">
+                                  <textarea className="editText"
                                     value={editedText}
                                     onChange={(e) => setEditedText(e.target.value)}
                                 />
-                                <button onClick={saveEditedComment}>Save</button>
+                                <button className="editedTextSave" onClick={saveEditedComment}>Save ✔</button>
+                            </div>
+                                
                             </>
                         ) : (
                             <p>{comment.text}</p>
                         )}
+
+                       
 
                         <div className="comment_action">
                             <img src={like} alt="like icon" />
@@ -119,8 +136,12 @@ function PlayVideo() {
                         </div>
 
                         <div className="comment-options">
-                            <button onClick={() => editComment(comment.id)}>Edit</button>
-                            <button onClick={() => deleteComment(comment.id)}>Delete</button>
+                            <button onClick={() => editComment(comment.id)}>
+                                 <img src={edit_icon} alt="Edit" />
+                            </button>
+                            <button onClick={() => deleteComment(comment.id)}>
+                                <img src={delete_icon} alt="Delete" />
+                            </button>
                         </div>
                     </div>
                 </div>
