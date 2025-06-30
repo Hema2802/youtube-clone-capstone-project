@@ -10,6 +10,23 @@ app.listen(PORT,()=>{
     console.log(`Server is running successfully on PORT ${PORT} 🚀`)
 })
 
+
+function requestLogger(req, res, next) {
+  const start = Date.now();
+
+  // Wait for the response to finish
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`${req.method} ${req.originalUrl} ${res.statusCode} - ${duration}ms`);
+  });
+
+  next(); // Pass control to the next middleware or route handler
+}
+
+// Database replaced with array-user data
+
+app.use(requestLogger);
+
 mongoose.connect("mongodb://localhost:27017");
 const db=mongoose.connection;
 

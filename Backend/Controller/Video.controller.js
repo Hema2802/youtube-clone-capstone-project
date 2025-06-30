@@ -1,3 +1,5 @@
+import videoModel from "../Model/Video.model.js";
+
 
 export function createVideo(req,res){
     const{title,thumbnailUrl,channelId,views,period,description,uploader,likes,dislikes,uploadDate,comments,videoUrl}=req.body;
@@ -25,4 +27,16 @@ export function createVideo(req,res){
         res.send(data)
     })
   
+}
+
+
+export function fetchVideos(req,res){
+    videoModel.find().then((data)=>{
+        if(!data){
+            return res.status(404).send("Somthing went wrong");
+        }
+        res.send(data)
+    }).catch((err)=>{
+        res.status(401).json({message:"Internal server error" || err.message})
+    })
 }
