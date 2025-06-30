@@ -45,10 +45,22 @@ function Feed({category}){
                             className="card"
                             key={video._id}
                         >
+
                             <img src={video.thumbnailUrl} alt={video.title} />
-                            <h2>{video.title}</h2>
-                            <h3>{video.uploader}</h3>
-                            <p>{video.views} views &bull; {video.period}</p>
+                            <div className="align_card">
+                               <div className="channel_logo">
+                                <img src={video.logoUrl} alt="channel logo"/>
+                               </div>
+
+                              <div>
+                               <h2>{video.title}</h2>
+                               <h3>{video.uploader}<span className="tick-mark"> √ </span></h3>
+                              <p>{video.views} views &bull; {video.period}</p>
+                            </div>
+
+                            </div>
+                            
+                            
                         </Link>
                     ))
                 )}

@@ -16,6 +16,10 @@ const videoSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  logoUrl:{
+    type:String,
+    required:true
+  },
   description: {
     type: String,
     maxlength: 500
@@ -23,6 +27,10 @@ const videoSchema = new mongoose.Schema({
   channelId: {
     type: String,
     required: true
+  },
+  subscription: {
+    type:String,
+    required : true
   },
   uploader: {
     type: String,

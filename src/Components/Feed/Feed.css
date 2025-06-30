@@ -6,33 +6,6 @@
     font-family: "Roboto", sans-serif;
 }
 
-/* .feed{
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    grid-column-gap: 16px;
-    grid-row-gap: 30px;
-    margin-top: 15px;
-}
-
-.card img{
-    width: 100%;
-    border-radius: 5px;
-}
-.card h2{
-    font-size: 16px;
-    font-weight: 600;
-    margin: 5px 0;
-    color: black;
-}
-.card h3{
-    font-size: 14px;
-    font-weight: 500;
-    color: gray;
-}
-.card p{
-    color: gray;
-    font-size: 14px;
-} */
 
 
 .feed {
@@ -54,16 +27,42 @@
 }
 
 .card h2 {
-  font-size: 16px;
-  margin: 10px 0 5px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 5px 0;
+    color: black;
 }
 
 .card h3 {
   font-size: 14px;
-  color: gray;
+  font-weight: 400;
+  color: rgb(96, 92, 92);
 }
 
 .card p {
-  font-size: 12px;
+  font-size: 14px;
+  padding-top: 5px;
   color: #666;
+}
+.tick-mark{
+  background-color: #666;
+  color: aliceblue;
+  border-radius: 100%;
+  padding: 1px;
+}
+.align_card{
+  display: flex;
+  flex-direction: row;
+  gap: 15px ;
+}
+.channel_logo{
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+  padding-right: 1px;
+  background-color: white;
+  border-radius: 100%;
+   border: 1px solid rgb(125, 123, 123); 
+   /* box-shadow: 10px 8px 6px gray;  */
+  margin-top: 8px;
 }

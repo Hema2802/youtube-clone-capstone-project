@@ -2,14 +2,16 @@ import videoModel from "../Model/Video.model.js";
 
 
 export function createVideo(req,res){
-    const{title,thumbnailUrl,channelId,views,period,description,uploader,likes,dislikes,uploadDate,comments,videoUrl}=req.body;
+    const{title,thumbnailUrl,logoUrl,channelId,views,period,description,uploader,subscription,likes,dislikes,uploadDate,comments,videoUrl}=req.body;
 
     const newVideo= new videoModel({
         title : title,
         channelId:channelId,
         views:views,
         period:period,
+        subscription:subscription,
         thumbnailUrl:thumbnailUrl,
+        logoUrl:logoUrl,
         description:description,
         uploader:uploader,
         likes:likes,
