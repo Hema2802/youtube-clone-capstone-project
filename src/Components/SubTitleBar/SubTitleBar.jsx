@@ -19,7 +19,7 @@ function SubTitleBar({category,setCategory}) {
         });
     };
 
-    const titles = ["All", "Popular Songs", "Gaming", "News", "Comedy", "Movies", "Programming", "Television Dramas", "AI"];
+    const titles = ["All", "Popular Songs", "Gaming", "News", "Trending", "Movies", "Programming", "Education", "AI"];
 
     return (
         <div className="subBar">

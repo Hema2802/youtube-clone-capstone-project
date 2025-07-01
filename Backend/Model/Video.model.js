@@ -59,7 +59,7 @@ const videoSchema = new mongoose.Schema({
   dislikes: {
     type: Number,
     // default: "",
-    required:true
+    
     
   },
   period: {
@@ -83,6 +83,12 @@ const videoSchema = new mongoose.Schema({
         required: true,
         maxlength: 300
       },
+      likes: {
+        type: String,
+    // default: "",
+        required:true
+    
+  },
       timestamp: {
         type: String,
         required:true
