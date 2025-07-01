@@ -41,7 +41,7 @@ function Feed({category}){
                 ) : (
                     filteredVideos.map(video => (
                         <Link
-                            to={`/video/${video.category}/${video._id}`}
+                            to={`/video/${video.categoryId}/${video._id}`}
                             className="card"
                             key={video._id}
                         >

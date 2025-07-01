@@ -13,7 +13,7 @@ import edit_icon from '../../assets/edit_icon.png';
 import delete_icon from '../../assets/delete_icon.png';
 
 function PlayVideo() {
-    const { videoId } = useParams();  // ✅ Get videoId from URL
+    const { videoId } = useParams();  // Get videoId from URL
     const [video, setVideo] = useState(null);
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
@@ -25,7 +25,7 @@ function PlayVideo() {
         // Fetch video details
         const fetchVideo = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/videos/${videoId}`);
+                const res = await axios.get(`http://localhost:3000/api/videos/${videoId}`);
                 setVideo(res.data);
                 setComments(res.data.comments || []); // assuming your video has a 'comments' array
             } catch (err) {
@@ -90,7 +90,7 @@ function PlayVideo() {
             <hr />
 
             <div className="publisher">
-                <img src={women_profile} alt="channel" />
+                <img src={video.logoUrl} alt="channel" />
                 <div>
                     <p>{video.uploader}</p>
                     <span className="subs_count">{video.subscription} Subscribers</span>
@@ -101,7 +101,7 @@ function PlayVideo() {
             <div className="video-desc">
                 <div className="disc-box">
                     <p>{video.description}</p>
-                    <p>Kindly watch and enjoy all my videos and do subscribe to watch more.</p>
+                    <p> Kindly do subscribe to watch more.</p>
                 </div>
                 <h4>{comments.length} comments</h4>
             </div>
@@ -126,7 +126,7 @@ function PlayVideo() {
                 <div className="comment" key={comment.id}>
                     <img src={common_profile} alt="user_profile" />
                     <div>
-                        <h3>{comment.name} <span>{comment.time}</span></h3>
+                        <h3>{comment.username} <span>{comment.timestamp}</span></h3>
                         {editingId === comment.id ? (
                             <div className="textarea">
                                 <textarea className="editText"

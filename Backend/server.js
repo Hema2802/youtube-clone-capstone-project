@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { routes } from "./Routes/Video.routes.js";
 import cors from 'cors'
+import { videoRoutes } from "./Routes/videoPlay.routes.js";
 
 const app=new express();
 app.use(express.json())
@@ -42,3 +43,4 @@ db.on("error",()=>{
 })
 
 routes(app);
+videoRoutes(app);

@@ -12,6 +12,14 @@ const videoSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  category:{
+    type:String,
+    required:true
+  },
+  categoryId:{
+  type:String,
+  required:true
+  },
   videoUrl: {
     type: String,
     required: true
@@ -22,7 +30,7 @@ const videoSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    maxlength: 500
+    maxlength: 1000
   },
   channelId: {
     type: String,
@@ -37,19 +45,22 @@ const videoSchema = new mongoose.Schema({
     required: true
   },
   views: {
-    type: Number,
-    default: 0,
-    min: 0
+    type: String,
+    // default: "",
+    required:true
+    
   },
   likes: {
-    type: Number,
-    default: 0,
-    min: 0
+    type: String,
+    // default: "",
+    required:true
+    
   },
   dislikes: {
     type: Number,
-    default: 0,
-    min: 0
+    // default: "",
+    required:true
+    
   },
   period: {
     type: String,
@@ -57,7 +68,7 @@ const videoSchema = new mongoose.Schema({
   },
   uploadDate: {
     type: String,
-    default: () => new Date().toISOString().split('T')[0]  // YYYY-MM-DD format
+    default: () => new Date().toISOString().split('T')[0]  
   },
   comments: [
     {
@@ -73,8 +84,8 @@ const videoSchema = new mongoose.Schema({
         maxlength: 300
       },
       timestamp: {
-        type: Date,
-        default: Date.now
+        type: String,
+        required:true
       }
     }
   ]
