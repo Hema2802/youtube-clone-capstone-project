@@ -7,13 +7,14 @@ import {Link} from 'react-router-dom'
 import SubTitleBar from "../SubTitleBar/SubTitleBar";
 
 
-function Feed({category}){
+function Feed(){
 
             const [videos, setVideos] = useState([]);
             const [loading, setLoading] = useState(true);
+            const [category, setCategory] = useState("All"); 
 
             useEffect(() => {
-        const fetchVideos = async () => {
+                const fetchVideos = async () => {
             try {
                 const res = await axios.get("http://localhost:3000/api/videos");
                 setVideos(res.data);
@@ -27,6 +28,8 @@ function Feed({category}){
         fetchVideos();
     }, []);
 
+    // Filter videos based on selected category
+
     const filteredVideos = category === "All"
         ? videos
         : videos.filter(video => video.category === category);
@@ -34,7 +37,8 @@ function Feed({category}){
 
     return(
         <>
-        <SubTitleBar/>
+        {/* ✅ Pass props to SubTitleBar */}
+        <SubTitleBar category={category} setCategory={setCategory}/>
          <div className="feed">
                 {loading ? (
                     <p>Loading videos...</p>
