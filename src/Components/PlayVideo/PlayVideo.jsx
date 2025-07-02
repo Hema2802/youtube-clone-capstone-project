@@ -11,6 +11,7 @@ import women_profile from '../../assets/women_profile.png';
 import common_profile from '../../assets/common_profile.png';
 import edit_icon from '../../assets/edit_icon.png';
 import delete_icon from '../../assets/delete_icon.png';
+import Recommended from "../Recommended/Recommended";
 
 function PlayVideo() {
     const { videoId } = useParams();  // Get videoId from URL
@@ -70,8 +71,10 @@ function PlayVideo() {
         setEditedText("");
     };
 
-    if (!video) return <div>Loading video...</div>;
-
+    if (!video) {
+        return <div>Loading video...</div>;
+    }
+    
     return (
         <div className="playVideo">
             <video src={video.videoUrl} controls autoPlay muted className="video" />
@@ -126,7 +129,7 @@ function PlayVideo() {
                 <div className="comment" key={comment.id}>
                     <img src={common_profile} alt="user_profile" />
                     <div>
-                        <h3>{comment.username} <span>{comment.timestamp}</span></h3>
+                        <h3>{comment.username || comment.name} <span>{comment.timestamp || comment.time}</span></h3>
                         {editingId === comment.id ? (
                             <div className="textarea">
                                 <textarea className="editText"
@@ -156,6 +159,9 @@ function PlayVideo() {
                     </div>
                 </div>
             ))}
+
+
+            
         </div>
     );
 }
