@@ -1,5 +1,5 @@
 
-import { loginUser, registerUser } from "../Controller/user.controller.js";
+import { loginUser, registerUser } from "../Controller/User.controller.js";
 
 
 export function  userRoutes(app){

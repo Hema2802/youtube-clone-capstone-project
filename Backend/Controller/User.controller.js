@@ -1,7 +1,7 @@
 
 // imported part
 
-import userModel from "../Models/User.model.js";
+import UserModel from "../Model/User.model.js";
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 
@@ -11,13 +11,13 @@ export function registerUser(req,res){
     // defining req body 
         const {fullName,email,password}=req.body;
         // find email already exist or not
-        userModel.findOne({email})
+        UserModel.findOne({email})
         .then((data)=>{
             if(data){
                 return res.status(400).json({message:"The Email is already exist in DB."})
             }
 
-            const newUser = new userModel({
+            const newUser = new UserModel({
                 fullName,
                 email,
                 // hashing the password using bcrypt
@@ -41,7 +41,7 @@ export function registerUser(req,res){
 export function loginUser(req,res){
     const {email,password}=req.body;
         // find email already exist or not
-        userModel.findOne({email})
+        UserModel.findOne({email})
         .then((data)=>{
             // if user data not register 
             if(!data){
