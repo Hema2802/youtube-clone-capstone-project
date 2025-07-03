@@ -6,9 +6,12 @@ import search_icon from '../../assets/search_icon.png'
 import mic_icon from '../../assets/mic_icon.png'
 import bell_gif from '../../assets/bell_gif.gif'
 import profile_icon from '../../assets/profile_icon.png'
+import SignIn from "../SignIn/SignIn";
+import { useState } from "react";
 
 
 function NavBar({setSideBar}){
+    const [showSignIn, setShowSignIn] = useState(false);
     const notificationCount=24;
     return(
         <>
@@ -42,7 +45,7 @@ function NavBar({setSideBar}){
                            <span className="notification-badge">{notificationCount}+</span>
                         )}
                   </div>
-                  <button className="signin-btn">Sign In</button>
+                  <button className="signin-btn" onClick={() => setShowSignIn(true)}>Sign In</button>
                   <img src={profile_icon} alt="profile logo"/>
 
              </div>
@@ -50,7 +53,7 @@ function NavBar({setSideBar}){
 
             </nav>
 
-           
+                  {showSignIn && <SignIn onClose={() => setShowSignIn(false)} />}
         
         </>
     )
