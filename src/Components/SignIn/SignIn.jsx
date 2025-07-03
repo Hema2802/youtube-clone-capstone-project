@@ -1,39 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './SignIn.css';
-import CreateAccount from '../CreateAccount/CreateAccount';
-import { useState } from 'react';
 
-function SignIn({ onClose,onRegister }) {
+function SignIn({ onClose, onRegister }) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
 
-    
+    const handleLogin = async (e) => {
+        e.preventDefault();
 
-   
+        try {
+            const response = await fetch("http://localhost:3000/api/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
 
+            const data = await response.json();
+
+            if (response.ok) {
+                alert("✅ Login successful! Welcome back.");
+                console.log("Logged in user:", data.user);
+
+                if (rememberMe) {
+                    localStorage.setItem("token", data.token); // optional
+                }
+
+                // You can close the modal or redirect user
+                onClose();
+            } else {
+                alert(`❌ ${data.message}`);
+            }
+        } catch (error) {
+            console.error("Login error:", error);
+            alert("Something went wrong during login");
+        }
+    };
 
     return (
         <div className="signin-modal">
             <div className="signin-box">
-                <button className="close-btn" onClick={onClose}>✘</button>
-                <h2>Sign In to Youtube</h2>
-                <form>
-                   
-                    
-                    <input type="email" placeholder="Your Email *" required />
-                    <input type="password" placeholder="Your Password *" required />
+                <button className="close-button" onClick={onClose}>✘</button>
+                <h2>Sign In</h2>
+                <form className="signin-form" onSubmit={handleLogin}>
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder="Enter email"
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
 
-                    <div className="checkbox-section">
-                    <label>
-                          <input type="checkbox" />
-                               Remember&nbsp;&nbsp;me
-                          </label>
-                          <a href="#" className="forgot-link">Forgot Password?</a>
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        value={password}
+                        placeholder="Enter password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+
+                    <div className="checkbox-sec">
+                        <label>
+                            <input
+                                type="checkbox"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                            />
+                            Remember&nbsp;&nbsp;me
+                        </label>
+                        <span className="forgot-password">
+                            <a href="#">Forgot Password?</a></span>
                     </div>
+                     <br/>
+                    <button type="submit" className="login-btn">Login</button>
 
-                    <button className="login-btn">Login to your account</button><br/><br></br>
-                    <p className="register-link" >Don't have an account? <br/><br/><a href="#" onClick={onRegister}>Register here</a></p>
+                    <p className="register-link">
+                        Don’t have an account? <br /><br />
+                        <a href="#" onClick={(e) => { e.preventDefault(); onRegister(); }}>
+                            Register here
+                        </a>
+                    </p>
                 </form>
             </div>
-            
         </div>
     );
 }

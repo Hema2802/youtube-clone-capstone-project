@@ -8,7 +8,7 @@ import { userRoutes } from "./Routes/User.routes.js";
 
 const app=new express();
 app.use(express.json())
-app.use(cors());
+app.use(cors()); //cors middleware
 
 const PORT =3000;
 app.listen(PORT,()=>{
