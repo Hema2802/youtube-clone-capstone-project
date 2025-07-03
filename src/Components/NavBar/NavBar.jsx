@@ -8,10 +8,12 @@ import bell_gif from '../../assets/bell_gif.gif'
 import profile_icon from '../../assets/profile_icon.png'
 import SignIn from "../SignIn/SignIn";
 import { useState } from "react";
+import CreateAccount from "../CreateAccount/CreateAccount";
 
 
 function NavBar({setSideBar}){
     const [showSignIn, setShowSignIn] = useState(false);
+     const [showCreateAccount, setShowCreateAccount] = useState(false);
     const notificationCount=24;
     return(
         <>
@@ -53,7 +55,25 @@ function NavBar({setSideBar}){
 
             </nav>
 
-                  {showSignIn && <SignIn onClose={() => setShowSignIn(false)} />}
+                  {showSignIn && (
+        <SignIn
+          onClose={() => setShowSignIn(false)}
+          onRegister={() => {
+            setShowSignIn(false);        // hide SignIn
+            setShowCreateAccount(true);  // show CreateAccount
+          }}
+        />
+      )}
+
+      {showCreateAccount && (
+        <CreateAccount onClose={() => setShowCreateAccount(false)} 
+        onLogin={() => {
+            setShowCreateAccount(false);  // Close CreateAccount
+            setShowSignIn(true);         // Show SignIn again
+          }}
+          
+          />
+      )}
         
         </>
     )

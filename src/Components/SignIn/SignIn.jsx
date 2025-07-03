@@ -1,7 +1,15 @@
 import React from 'react';
 import './SignIn.css';
+import CreateAccount from '../CreateAccount/CreateAccount';
+import { useState } from 'react';
 
-function SignIn({ onClose }) {
+function SignIn({ onClose,onRegister }) {
+
+    
+
+   
+
+
     return (
         <div className="signin-modal">
             <div className="signin-box">
@@ -22,9 +30,10 @@ function SignIn({ onClose }) {
                     </div>
 
                     <button className="login-btn">Login to your account</button><br/><br></br>
-                    <p className="register-link">Don't have an account? <br/><br/><a href="#">Register here</a></p>
+                    <p className="register-link" >Don't have an account? <br/><br/><a href="#" onClick={onRegister}>Register here</a></p>
                 </form>
             </div>
+            
         </div>
     );
 }
