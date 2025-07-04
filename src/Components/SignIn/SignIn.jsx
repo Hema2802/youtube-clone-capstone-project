@@ -28,6 +28,8 @@ function SignIn({ onClose, onRegister }) {
             
             localStorage.setItem("userFullName", data.user.fullName);
 
+            localStorage.setItem("isLoggedIn", "true"); 
+
             // Store token only if rememberMe is checked
             if (rememberMe) {
                 localStorage.setItem("token", data.accessToken); // fixed key

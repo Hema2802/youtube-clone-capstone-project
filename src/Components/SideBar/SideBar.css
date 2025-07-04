@@ -1,33 +1,54 @@
+/* Normal Sidebar */
+.sideBar {
+  background-color: white;
+  width: 220px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  padding-left: 20px;
+  padding-top: 130px;
+  overflow-y: auto;
+  transition: all 0.3s ease-in-out;
+}
 
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+/* Side links */
+.side-links {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: fit-content;
+  cursor: pointer;
 }
-.sideBar{
-    background-color: white;
-    width: 180px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    padding-left: 20px;
-    padding-top: 130px;
+
+/* Icon inside link */
+.side-links img {
+  width: 25px;
+  margin-right: 20px;
 }
-.sortcut-links img{
-    width: 25px;
-    margin-right: 20px;
-}
-.side-links{
-    display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-    width: fit-content;
-    flex-wrap: wrap;
-    cursor: pointer;
-}
+
+/* Collapsed Sidebar */
 .small-sidebar {
-    width: 20px;
+  width: 80px;
+  padding-left: 10px;
 }
-.small-sidebar p{
-    display: none;
+
+/* Hide text inside collapsed sidebar */
+.small-sidebar .side-links p,
+.small-sidebar h3 {
+  display: none;
+}
+
+/* Scrollbar styling */
+.sideBar::-webkit-scrollbar {
+  width: 6px;
+}
+.sideBar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.sortcut-links p:hover{
+  background-color: rgb(229, 226, 226);
+  border-radius: 10px;
+  padding: 5px 10px;
 }
