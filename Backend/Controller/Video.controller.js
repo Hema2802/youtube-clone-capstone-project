@@ -91,3 +91,16 @@ export async function deleteVideo(req,res){
      }
     
 }
+
+export async function searchVideo(req,res){
+    const query = req.query.query;
+
+  try {
+    const results = await videoModel.find({
+      title: { $regex: query, $options: "i" }  // Case-insensitive partial match
+    });
+    res.json(results);
+  } catch (error) {
+    res.status(500).json({ error: "Search failed" });
+  }
+}

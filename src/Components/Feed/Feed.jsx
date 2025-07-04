@@ -5,9 +5,10 @@ import axios from 'axios';
 import './Feed.css'
 import {Link} from 'react-router-dom'
 import SubTitleBar from "../SubTitleBar/SubTitleBar";
+import SideBar from "../SideBar/SideBar";
 
 
-function Feed(){
+function Feed({sideBar}){
 
             const [videos, setVideos] = useState([]);
             const [loading, setLoading] = useState(true);
@@ -39,14 +40,15 @@ function Feed(){
         <>
         {/* ✅ Pass props to SubTitleBar */}
         <SubTitleBar category={category} setCategory={setCategory}/>
-         <div className="feed">
+         <div className="feed" >
                 {loading ? (
                     <p>Loading videos...</p>
                 ) : (
                     filteredVideos.map(video => (
                         <Link
                             to={`/video/${video.categoryId}/${video._id}`}
-                            className="card"
+                           
+                            className={`card ${sideBar ? "wide-card" : "narrow-card"}`}
                             key={video._id}
                         >
 

@@ -23,6 +23,7 @@ import settings from '../../assets/settings.png'
 
 
 function SideBar({sideBar}){
+    
     return(
         <>
           <div className={`sideBar ${sideBar? "": "small-sidebar"}`}>

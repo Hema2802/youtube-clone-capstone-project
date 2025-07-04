@@ -16,7 +16,7 @@ function NavBar({ setSideBar }) {
     localStorage.getItem("isLoggedIn") === "true"
   );
 
-  // 🔁 Function to update initials
+  // Function to update initials
   const updateUserInitial = () => {
     const fullName = localStorage.getItem("userFullName");
     const email = localStorage.getItem("userEmail");
@@ -33,13 +33,13 @@ function NavBar({ setSideBar }) {
     }
   };
 
-  // 🔁 On load or after login modal
+  //  On load or after login modal
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
     updateUserInitial();
   }, [showSignIn]);
 
-  // 🔁 Logout
+  // Logout
   const handleLogout = () => {
     localStorage.clear();
     setIsLoggedIn(false);
@@ -114,8 +114,8 @@ function NavBar({ setSideBar }) {
           {userInitial ? (
             <div className="user-initial-circle">{userInitial}</div>
           ) : (
-            <div className="user-initial-circle">
-              <img
+            <div >
+              <img style={{width:"35px",height:"35px"}}
                 src="https://img.icons8.com/?size=100&id=492ILERveW8G&format=png&color=000000"
                 alt="user"
               />

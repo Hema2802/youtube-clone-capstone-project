@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -67,3 +69,20 @@
    /* box-shadow: 10px 8px 6px gray;  */
   margin-top: 8px;
 }
+
+/* When sidebar is expanded */
+.wide-card {
+  width: 300px;
+}
+
+/* When sidebar is collapsed */
+.narrow-card {
+  width: 338px;
+}
+
+/* Optional hover effect */
+.card:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  transform: scale(1.02);
+}
+
