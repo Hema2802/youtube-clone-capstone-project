@@ -9,11 +9,32 @@ import profile_icon from '../../assets/profile_icon.png'
 import SignIn from "../SignIn/SignIn";
 import { useState } from "react";
 import CreateAccount from "../CreateAccount/CreateAccount";
+import { useEffect } from "react";
 
 
 function NavBar({setSideBar}){
     const [showSignIn, setShowSignIn] = useState(false);
      const [showCreateAccount, setShowCreateAccount] = useState(false);
+     const [userInitial, setUserInitial] = useState("");
+    
+     useEffect(() => {
+  const fullName = localStorage.getItem("userFullName");
+  const email = localStorage.getItem("userEmail");
+
+  if (fullName && fullName.trim().length > 0) {
+    const nameParts = fullName.trim().split(" ");
+    let initials = nameParts[0].charAt(0).toUpperCase();
+
+    if (nameParts.length > 1) {
+      initials += nameParts[1].charAt(0).toUpperCase();
+    }
+
+    setUserInitial(initials);
+  } else if (email && email.trim().length > 0) {
+    setUserInitial(email.trim().charAt(0).toUpperCase());
+  }
+}, []);
+
     const notificationCount=24;
     return(
         <>
@@ -39,7 +60,7 @@ function NavBar({setSideBar}){
              {/*right part  */}
 
              <div className="nav-right flex-div">
-                  <button>╋ Create </button>
+                  <button style={{ display: "flex",justifyContent:"center" , gap: "5px", }}> ╋ Create <img style={{ width: "20px", height: "20px" }} src='https://img.icons8.com/?size=100&id=9V80N2KhEcOh&format=png&color=000000'/> </button>
                   
                   <div className="notification-bell">
                        <img src={bell_gif} alt="notification bell" />
@@ -47,8 +68,15 @@ function NavBar({setSideBar}){
                            <span className="notification-badge">{notificationCount}+</span>
                         )}
                   </div>
-                  <button className="signin-btn" onClick={() => setShowSignIn(true)}>Sign In</button>
-                  <img src={profile_icon} alt="profile logo"/>
+                  
+
+                  {userInitial ? (
+                    <div className="user-initial-circle">{userInitial}</div> 
+                ) : (
+                    // 
+                    <button className="signin-btn" onClick={() => setShowSignIn(true)}>Sign In</button>
+                )}
+                  
 
              </div>
 

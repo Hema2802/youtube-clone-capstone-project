@@ -22,9 +22,16 @@ function SignIn({ onClose, onRegister }) {
                 alert("✅ Login successful! Welcome back.");
                 console.log("Logged in user:", data.user);
 
-                if (rememberMe) {
-                    localStorage.setItem("token", data.token); // optional
-                }
+               
+            // Store user email in localStorage to access in NavBar
+            localStorage.setItem("userEmail", data.user.email);
+            
+            localStorage.setItem("userFullName", data.user.fullName);
+
+            // Store token only if rememberMe is checked
+            if (rememberMe) {
+                localStorage.setItem("token", data.accessToken); // fixed key
+            }
 
                 // You can close the modal or redirect user
                 onClose();

@@ -82,8 +82,11 @@ nav{
 }
 .nav-right .signin-btn{
     background-color: white;
-    color: red;
+    color: blue;
     font-weight: 700;
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 5px 10px;
 }
 .nav-right .signin-btn:hover{
     background-color: rgb(238, 232, 232);
@@ -110,5 +113,20 @@ nav{
   font-size: 12px;
   font-weight: bold;
   line-height: 1;
+}
+.user-initial-circle{
+    width: 35px;
+    height: 35px;
+    background-color: #4d79ff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
+    margin-right: 10px;
+    text-transform: uppercase;
 }
 
