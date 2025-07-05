@@ -7,6 +7,7 @@ import bell_gif from "../../assets/bell_gif.gif";
 import profile_icon from "../../assets/profile_icon.png";
 import SignIn from "../SignIn/SignIn";
 import CreateAccount from "../CreateAccount/CreateAccount";
+import { useNavigate} from 'react-router-dom'
 
 function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
   const [showSignIn, setShowSignIn] = useState(false);
@@ -16,6 +17,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
     localStorage.getItem("isLoggedIn") === "true"
   );
   const [searchInput, setSearchInput] = useState("");
+   const navigate = useNavigate();
 
   // Function to update initials
   const updateUserInitial = () => {
@@ -99,6 +101,8 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
               alignItems: "center",
               gap: "5px",
             }}
+
+            onClick={() => navigate("/create-channel")}
           >
             ╋ Create
             <img

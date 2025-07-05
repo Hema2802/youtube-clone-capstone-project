@@ -1,0 +1,91 @@
+
+.create-channel-container {
+  width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.create-channel-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group input {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.preview-img {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  background: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+button[type="submit"]:hover{
+    background-color: #d32f2f;
+}
+.channel-user{
+    width: 150px;
+    height: 150px;
+    border: 2px solid gray;
+    border-radius: 100%;
+    /* margin-left: 140px; */
+}
+.terms-para{
+    text-align: justify;
+    color: rgb(166, 163, 163);
+    line-height: 21px;
+    font-weight: 400;
+    font-size: 14px;
+}
+.remove-img-btn{
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+.cancel-btn {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 10px 20px;
+  background: #f44336;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn:hover {
+  background: #d32f2f;
+}

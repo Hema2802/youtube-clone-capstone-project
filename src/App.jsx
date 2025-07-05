@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Home/Home.jsx'
 import Video from './Videos/Video.jsx'
 import { useState } from 'react';
+import CreateChannel from './Components/CreateChannel/CreateChannel.jsx';
 
 
 function App() {
@@ -35,6 +36,8 @@ const [searchTriggered, setSearchTriggered] = useState(false);
 
 
             <Route path="/video/:categoryId/:videoId" element={<Video/>}/>
+
+            <Route path="/create-channel" element={<CreateChannel />} />
       </Routes>
     </>
   )
