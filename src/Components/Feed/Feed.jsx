@@ -8,11 +8,11 @@ import SubTitleBar from "../SubTitleBar/SubTitleBar";
 import SideBar from "../SideBar/SideBar";
 
 
-function Feed({sideBar}){
+function Feed({sideBar,searchTerm, searchTriggered,category}){
 
             const [videos, setVideos] = useState([]);
             const [loading, setLoading] = useState(true);
-            const [category, setCategory] = useState("All"); 
+            // const [category, setCategory] = useState("All"); 
 
             useEffect(() => {
                 const fetchVideos = async () => {
@@ -31,15 +31,28 @@ function Feed({sideBar}){
 
     // Filter videos based on selected category
 
-    const filteredVideos = category === "All"
-        ? videos
-        : videos.filter(video => video.category === category);
+    // const filteredVideos = category === "All"
+    //     ? videos
+    //     : videos.filter(video => video.category === category);
+
+    // 🔍 Filter videos based on search term or category
+  const filteredVideos = videos.filter((video) => {
+    if (searchTriggered && searchTerm.trim() !== "") {
+      const lowerSearch = searchTerm.toLowerCase();
+      return (
+        video.title.toLowerCase().includes(lowerSearch) ||
+        video.uploader.toLowerCase().includes(lowerSearch)
+      );
+    }
+
+    return category === "All" || video.category === category;
+  });
 
 
     return(
         <>
-        {/* ✅ Pass props to SubTitleBar */}
-        <SubTitleBar category={category} setCategory={setCategory}/>
+        {/*  Pass props to SubTitleBar */}
+        <SubTitleBar category={category} setCategory={()=>{}}/>
          <div className="feed" >
                 {loading ? (
                     <p>Loading videos...</p>

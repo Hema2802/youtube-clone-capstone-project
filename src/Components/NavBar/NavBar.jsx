@@ -8,13 +8,14 @@ import profile_icon from "../../assets/profile_icon.png";
 import SignIn from "../SignIn/SignIn";
 import CreateAccount from "../CreateAccount/CreateAccount";
 
-function NavBar({ setSideBar }) {
+function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showCreateAccount, setShowCreateAccount] = useState(false);
   const [userInitial, setUserInitial] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
+  const [searchInput, setSearchInput] = useState("");
 
   // Function to update initials
   const updateUserInitial = () => {
@@ -69,8 +70,23 @@ function NavBar({ setSideBar }) {
         {/* Middle */}
         <div className="middle_part flex-div">
           <div className="search-box">
-            <input type="text" placeholder="Search" />
-            <img className="search-icon" src={search_icon} alt="search" />
+
+            <input 
+                   type="text" 
+                   placeholder="Search" 
+                   value={searchInput}
+                   onChange={(e) => setSearchInput(e.target.value)}
+            />
+
+            <img 
+                 className="search-icon" 
+                 src={search_icon} 
+                 alt="search" 
+                 onClick={() => {
+                                setSearchTerm(searchInput);
+                                setSearchTriggered(true);
+               }} />
+
           </div>
           <img className="mic-logo" src={mic_icon} alt="mic" />
         </div>

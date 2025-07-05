@@ -22,26 +22,30 @@ import settings from '../../assets/settings.png'
 
 
 
-function SideBar({sideBar}){
+function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTriggered}){
     
     return(
         <>
           <div className={`sideBar ${sideBar? "": "small-sidebar"}`}>
             <div className="sortcut-links">
-                <div className="side-links">
-                    <img src={home_icon} alt="Home icon "/> <p>Home</p>
+                <div className="side-links" onClick={() => {
+                    setCategory("All"); 
+                    setSearchTerm("");
+                    setSearchTriggered(false);
+                }}>
+                    <img src={home_icon} alt="Home icon " /> <p>Home</p>
                 </div>
 
                 <div className="side-links">
-                    <img src={yt_shorts} alt="Home icon "/> <p>Shorts</p>
+                    <img src={yt_shorts} alt="yt shorts icon "/> <p>Shorts</p>
                 </div>
 
                 <div className="side-links">
-                    <img src={subscription_icon} alt="Home icon "/> <p>Subscription</p>
+                    <img src={subscription_icon} alt="subscription icon "/> <p>Subscription</p>
                 </div>
 
                 <div className="side-links">
-                    <img src={youtube_music} alt="Home icon "/> <p>YT Music</p>
+                    <img src={youtube_music} alt="yt music icon "/> <p>YT Music</p>
                 </div>
 
             </div>
