@@ -16,15 +16,24 @@ const navigate = useNavigate();
     }
   };
 
+  
+
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Creating channel:", {
-      channelName,
-      channelHandle,
-      channelImage,
-    });
-    alert("Channel created successfully!");
+  e.preventDefault();
+
+  const channelData = {
+    name: channelName,
+    handle: channelHandle,
+    image: channelImage,
   };
+
+  // Save to localStorage
+  localStorage.setItem("myChannel", JSON.stringify(channelData));
+
+  alert("Channel created successfully!");
+  navigate("/channel");
+};
+
 
   const removeImage = () => {
   setChannelImage(null);

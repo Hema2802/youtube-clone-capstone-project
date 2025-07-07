@@ -7,6 +7,7 @@ import Home from './Home/Home.jsx'
 import Video from './Videos/Video.jsx'
 import { useState } from 'react';
 import CreateChannel from './Components/CreateChannel/CreateChannel.jsx';
+import ChannelPage from './Components/ChannelPage/ChannelPage.jsx';
 
 
 function App() {
@@ -38,6 +39,8 @@ const [searchTriggered, setSearchTriggered] = useState(false);
             <Route path="/video/:categoryId/:videoId" element={<Video/>}/>
 
             <Route path="/create-channel" element={<CreateChannel />} />
+
+            <Route path="/channel" element={<ChannelPage />} />
       </Routes>
     </>
   )

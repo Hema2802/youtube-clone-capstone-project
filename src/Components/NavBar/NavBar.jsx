@@ -17,6 +17,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
     localStorage.getItem("isLoggedIn") === "true"
   );
   const [searchInput, setSearchInput] = useState("");
+  const [showUserMenu, setShowUserMenu] = useState(false);
    const navigate = useNavigate();
 
   // Function to update initials
@@ -48,6 +49,20 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
     setIsLoggedIn(false);
     setUserInitial("");
   };
+
+
+  // click outside of container to close dropdown list
+
+  useEffect(() => {
+  const handleClickOutside = (e) => {
+    if (!e.target.closest(".user-menu-container")) {
+      setShowUserMenu(false);
+    }
+  };
+  document.addEventListener("click", handleClickOutside);
+  return () => document.removeEventListener("click", handleClickOutside);
+}, []);
+
 
   const notificationCount = 24;
 
@@ -130,17 +145,44 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
             </button>
           )}
 
+          
           {/* User Initials or Default Icon */}
-          {userInitial ? (
-            <div className="user-initial-circle">{userInitial}</div>
-          ) : (
-            <div >
-              <img style={{width:"35px",height:"35px"}}
-                src="https://img.icons8.com/?size=100&id=492ILERveW8G&format=png&color=000000"
-                alt="user"
-              />
-            </div>
-          )}
+{userInitial ? (
+  <div className="user-menu-container">
+    <div
+      className="user-initial-circle"
+      onClick={() => setShowUserMenu((prev) => !prev)}
+    >
+      {userInitial}
+    </div>
+
+    {showUserMenu && (
+      <div className="user-dropdown">
+        <p className="user-eye" onClick={() => {
+          navigate("/channel");
+          setShowUserMenu(false);
+        }}>
+          👁 View Channel
+        </p>
+        <p onClick={() => {
+          handleLogout();
+          setShowUserMenu(false);
+        }}>
+          ⏻ Logout
+        </p>
+      </div>
+    )}
+  </div>
+) : (
+  <div>
+    <img
+      style={{ width: "35px", height: "35px" }}
+      src="https://img.icons8.com/?size=100&id=492ILERveW8G&format=png&color=000000"
+      alt="user"
+    />
+  </div>
+)}
+
         </div>
       </nav>
 

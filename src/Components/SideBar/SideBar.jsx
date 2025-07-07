@@ -49,7 +49,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
                 </div>
 
             </div>
-                <hr/>
+                <hr className="hr-tag"/>
             
             
             <div className="sortcut-links"><br/>
@@ -78,7 +78,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
                
             </div>
 
-            <hr/>
+            <hr className="hr-tag"/>
 
             <div className="sortcut-links"><br/>
                 <h3>Explore ≫</h3><br/>
@@ -113,7 +113,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
 
             </div>
 
-            <hr/>
+            <hr className="hr-tag"/>
             <br/>
 
             <div className="sortcut-links">
@@ -138,7 +138,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
 
             </div>
 
-            <hr/>
+            <hr className="hr-tag"/>
             <br/>
 
             <div className="sortcut-links">
