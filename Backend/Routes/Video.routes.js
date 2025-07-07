@@ -4,7 +4,7 @@ import { VerifyToken } from "../Middleware/VerifyToken.js";
 
 export function routes(app) {
     app.post("/api/video",VerifyToken,createVideo);
-    app.get("/api/videos",fetchVideos);
+    app.get("/api/videos",VerifyToken,fetchVideos);
     app.put("/api/video/:id", updateVideoData);
     app.delete("/api/video/:id",deleteVideo);
     app.get("/search",searchVideo);

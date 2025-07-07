@@ -29,11 +29,15 @@ function SignIn({ onClose, onRegister }) {
             localStorage.setItem("userFullName", data.user.fullName);
 
             localStorage.setItem("isLoggedIn", "true"); 
+            window.dispatchEvent(new Event("storage")); 
+
 
             // Store token only if rememberMe is checked
             if (rememberMe) {
-                localStorage.setItem("token", data.accessToken); // fixed key
-            }
+                localStorage.setItem("token", data.accessToken);
+             } else {
+                sessionStorage.setItem("token", data.accessToken); // temporary storage
+             }
 
                 // You can close the modal or redirect user
                 onClose();

@@ -48,6 +48,9 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
     localStorage.clear();
     setIsLoggedIn(false);
     setUserInitial("");
+
+    // ✅ Notify other components like Feed.jsx
+  window.dispatchEvent(new Event("storage"));
   };
 
 

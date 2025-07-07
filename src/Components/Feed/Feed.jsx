@@ -1,23 +1,49 @@
-
-import React, { useEffect } from "react";
-import { useState } from "react";
-import axios from 'axios';
-import './Feed.css'
-import {Link} from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import './Feed.css';
+import { Link } from "react-router-dom";
 import SubTitleBar from "../SubTitleBar/SubTitleBar";
-import SideBar from "../SideBar/SideBar";
+
+function Feed({ sideBar, searchTerm, searchTriggered }) {
+    const [videos, setVideos] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [category, setCategory] = useState("All");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    //  Check login status once when component mounts
+    useEffect(() => {
+  const checkLogin = () => {
+    const loginStatus = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loginStatus);
+  };
+ // Listen to changes in login status
+  window.addEventListener("storage", checkLogin);
+  checkLogin();
+
+  return () => window.removeEventListener("storage", checkLogin);
+}, []);
 
 
-function Feed({sideBar,searchTerm, searchTriggered,category}){
+    //  Fetch videos only when user is logged in
+    useEffect(() => {
+        const fetchVideos = async () => {
+            const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
-            const [videos, setVideos] = useState([]);
-            const [loading, setLoading] = useState(true);
-            // const [category, setCategory] = useState("All"); 
+            console.log(" token:", token); // Check if token exists
+    console.log("isLoggedIn:", isLoggedIn); //  Confirm login state
 
-            useEffect(() => {
-                const fetchVideos = async () => {
+
+            if (!token) {
+                console.warn("No token found in storage");
+                return;
+            }
+
             try {
-                const res = await axios.get("http://localhost:3000/api/videos");
+                const res = await axios.get("http://localhost:3000/api/videos", {
+                    headers: {
+                        Authorization: `JWT ${token}` // match your backend
+                    }
+                });
                 setVideos(res.data);
                 setLoading(false);
             } catch (err) {
@@ -26,68 +52,64 @@ function Feed({sideBar,searchTerm, searchTriggered,category}){
             }
         };
 
-        fetchVideos();
-    }, []);
+        if (isLoggedIn) {
+            fetchVideos();
+        }
+    }, [isLoggedIn]);
 
-    // Filter videos based on selected category
+    // ✅ Filter videos by search or category
+    const filteredVideos = videos.filter((video) => {
+        if (searchTriggered && searchTerm.trim() !== "") {
+            const lowerSearch = searchTerm.toLowerCase();
+            return (
+                video.title.toLowerCase().includes(lowerSearch) ||
+                video.uploader.toLowerCase().includes(lowerSearch)
+            );
+        }
 
-    // const filteredVideos = category === "All"
-    //     ? videos
-    //     : videos.filter(video => video.category === category);
+        return category === "All" || video.category === category;
+    });
 
-    // 🔍 Filter videos based on search term or category
-  const filteredVideos = videos.filter((video) => {
-    if (searchTriggered && searchTerm.trim() !== "") {
-      const lowerSearch = searchTerm.toLowerCase();
-      return (
-        video.title.toLowerCase().includes(lowerSearch) ||
-        video.uploader.toLowerCase().includes(lowerSearch)
-      );
-    }
-
-    return category === "All" || video.category === category;
-  });
-
-
-    return(
+    return (
         <>
-        {/*  Pass props to SubTitleBar */}
-        <SubTitleBar category={category} setCategory={()=>{}}/>
-         <div className="feed" >
-                {loading ? (
+            {/* Pass category props to SubTitleBar */}
+            <SubTitleBar category={category} setCategory={setCategory} />
+
+            <div className="feed">
+                {!isLoggedIn ? (
+                    <div className="login-warning">
+                        <h2>Welcome To My Youtube</h2>
+                        <p>🔒 To access our exclusive video content, please sign in to your account.</p>
+                    </div>
+                ) : loading ? (
                     <p>Loading videos...</p>
                 ) : (
-                    filteredVideos.map(video => (
+                    filteredVideos.map((video) => (
                         <Link
                             to={`/video/${video.categoryId}/${video._id}`}
-                           
                             className={`card ${sideBar ? "wide-card" : "narrow-card"}`}
                             key={video._id}
                         >
-
                             <img src={video.thumbnailUrl} alt={video.title} />
                             <div className="align_card">
-                               <div className="channel_logo">
-                                <img src={video.logoUrl} alt="channel logo"/>
-                               </div>
-
-                              <div>
-                               <h2>{video.title}</h2>
-                               <h3>{video.uploader}<span className="tick-mark"> √ </span></h3>
-                              <p>{video.views} views &bull; {video.period}</p>
+                                <div className="channel_logo">
+                                    <img src={video.logoUrl} alt="channel logo" />
+                                </div>
+                                <div>
+                                    <h2>{video.title}</h2>
+                                    <h3>
+                                        {video.uploader}
+                                        <span className="tick-mark"> √ </span>
+                                    </h3>
+                                    <p>{video.views} views &bull; {video.period}</p>
+                                </div>
                             </div>
-
-                            </div>
-                            
-                            
                         </Link>
                     ))
                 )}
             </div>
-           
-        
         </>
-    )
+    );
 }
 
 export default Feed;
