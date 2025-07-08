@@ -10,3 +10,33 @@
 .large-container{
     padding-left: 7%;
 }
+
+
+
+/* Medium screen (Tablet) */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 12%;
+  }
+
+  .large-container {
+    padding-left: 5% !important;
+  }
+}
+
+/* Small screen (Mobile) */
+@media (max-width: 768px) {
+  .container,
+  .large-container {
+    padding-left: 4% !important;
+    padding-right: 4% !important;
+  }
+}
+
+/* Extra Small screen (Very narrow phones) */
+@media (max-width: 480px) {
+  .container,
+  .large-container {
+    padding: 10px !important;
+  }
+}

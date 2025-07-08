@@ -92,3 +92,93 @@ padding-bottom: 10px;
   align-items: center;
   gap: 5px;
 }
+
+
+/*  Tablet  */
+@media screen and (max-width: 1024px) {
+  .createaccount-box {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .createaccount-box h2 {
+    font-size: 22px;
+  }
+
+  .register-btn {
+    font-size: 15px;
+  }
+}
+
+/*  Mobile  */
+@media screen and (max-width: 768px) {
+  .createaccount-box {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  .createaccount-box h2 {
+    font-size: 20px;
+  }
+
+  .createaccount-box input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .register-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .close-button {
+    font-size: 18px;
+  }
+
+  .checkbox-sec {
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.85rem;
+    gap: 5px;
+  }
+
+  .login-link {
+    flex-direction: column;
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+/*  Extra Small Devices */
+@media screen and (max-width: 480px) {
+  .createaccount-box {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .createaccount-box h2 {
+    font-size: 18px;
+  }
+
+  .createaccount-box input {
+    font-size: 13px;
+    padding: 7px;
+  }
+
+  .register-btn {
+    font-size: 13px;
+    padding: 9px;
+  }
+
+  .checkbox-sec {
+    font-size: 0.8rem;
+  }
+
+  .close-button {
+    font-size: 16px;
+  }
+
+  .login-link {
+    font-size: 12px;
+  }
+}

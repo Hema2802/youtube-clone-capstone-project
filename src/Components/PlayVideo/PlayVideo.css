@@ -196,3 +196,40 @@
     display: flex;
     flex-direction: row;
 }
+
+
+
+
+/* ----------------------------- */
+/* 📱 Mobile & Tablet Responsive */
+/* ----------------------------- */
+@media screen and (max-width: 768px) {
+  .playVideo {
+    flex-basis: 100%;
+    padding: 10px;
+  }
+
+  .play-video-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .publisher {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .publisher button {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .comment {
+    flex-direction: column;
+  }
+
+  .editText {
+    width: 100%;
+  }
+}

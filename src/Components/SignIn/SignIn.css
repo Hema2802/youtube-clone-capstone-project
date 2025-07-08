@@ -92,3 +92,43 @@
   margin-top: 10px;
   
 }
+
+
+
+/* ✅ Responsive Styles */
+@media (max-width: 768px) {
+  .signin-box {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .login-btn {
+    font-size: 15px;
+    padding: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signin-box {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  .signin-box h2 {
+    font-size: 18px;
+  }
+
+  .login-btn {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .close-btn {
+    font-size: 16px;
+    padding: 2px 6px;
+  }
+
+  .register-link {
+    font-size: 13px;
+  }
+}

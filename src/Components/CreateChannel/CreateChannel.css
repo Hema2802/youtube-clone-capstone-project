@@ -89,3 +89,95 @@ button[type="submit"]:hover{
 .cancel-btn:hover {
   background: #d32f2f;
 }
+
+
+/* 🔻 Tablet (max-width: 1024px) */
+@media screen and (max-width: 1024px) {
+  .create-channel-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .channel-user {
+    width: 120px;
+    height: 120px;
+  }
+
+  .preview-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .form-group input {
+    font-size: 15px;
+  }
+}
+
+/* 🔻 Mobile (max-width: 768px) */
+@media screen and (max-width: 768px) {
+  .create-channel-container {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .channel-user {
+    width: 100px;
+    height: 100px;
+  }
+
+  .preview-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+  }
+
+  .terms-para {
+    font-size: 13px;
+  }
+
+  button[type="submit"],
+  .cancel-btn,
+  .remove-img-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+  }
+
+  .cancel-btn {
+    margin-left: 0;
+  }
+}
+
+/* 🔻 Extra Small Devices (max-width: 480px) */
+@media screen and (max-width: 480px) {
+  .create-channel-container h2 {
+    font-size: 20px;
+  }
+
+  .channel-user {
+    width: 90px;
+    height: 90px;
+  }
+
+  .preview-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .form-group input {
+    font-size: 13px;
+  }
+
+  .terms-para {
+    font-size: 12px;
+  }
+
+  button[type="submit"],
+  .cancel-btn,
+  .remove-img-btn {
+    font-size: 14px;
+  }
+}

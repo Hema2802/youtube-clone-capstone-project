@@ -165,3 +165,110 @@ nav{
 }
 
 
+/* 🔻 Responsive for Tablets & Mobiles */
+@media screen and (max-width: 1024px) {
+  .middle_part .search-box input {
+    width: 300px;
+  }
+
+  .nav-left .yt_logo {
+    width: 140px;
+    height: auto;
+  }
+
+  .nav-right button {
+    padding: 5px 15px;
+    font-size: 14px;
+  }
+
+  .user-initial-circle {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
+
+  .notification-bell img {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* 🔻 Responsive for Mobile Devices */
+@media screen and (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .nav-left, .middle_part, .nav-right {
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+
+  .middle_part {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .middle_part .search-box {
+    width: 100%;
+    margin: 10px 0;
+    padding: 6px 10px;
+  }
+
+  .middle_part .search-box input {
+    width: 100%;
+  }
+
+  .nav-right {
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .nav-right button {
+    font-size: 14px;
+    padding: 5px 10px;
+  }
+
+  .user-dropdown {
+    right: -20px;
+  }
+}
+
+/* 🔻 Very Small Devices */
+@media screen and (max-width: 480px) {
+  .middle_part .search-box input {
+    width: 180px;
+    font-size: 14px;
+  }
+
+  .nav-left .yt_logo {
+    width: 120px;
+  }
+
+  .menu-icon {
+    width: 28px;
+    margin-right: 10px;
+  }
+
+  .middle_part .mic-logo {
+    width: 30px;
+  }
+
+  .notification-badge {
+    font-size: 10px;
+    padding: 1px 5px;
+    top: -4px;
+    right: 8px;
+  }
+
+  .user-initial-circle {
+    width: 28px;
+    height: 28px;
+    font-size: 15px;
+  }
+}

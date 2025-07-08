@@ -57,3 +57,23 @@
 .scroll-btn.right {
   margin-left: 10px;
 }
+
+
+
+
+/* Hide scroll buttons on very small screens */
+@media (max-width: 480px) {
+  .scroll-btn {
+    display: none;
+  }
+
+  .subBar {
+    justify-content: center;
+    padding: 10px 5px;
+  }
+
+  .sub-btn {
+    font-size: 12px;
+    padding: 8px 16px;
+  }
+}

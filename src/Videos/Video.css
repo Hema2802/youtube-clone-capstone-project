@@ -9,3 +9,33 @@
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
+
+
+
+
+
+/* Tablet screens */
+@media (max-width: 768px) {
+  .play-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .play-container > * {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .play-container {
+    padding: 10px;
+  }
+
+  .play-container > * {
+    min-width: 100%;
+    flex: 1 1 100%;
+  }
+}

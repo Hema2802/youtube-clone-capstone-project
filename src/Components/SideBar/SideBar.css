@@ -57,3 +57,52 @@
   width: 180px;
   margin-left: -10px;
 }
+
+
+
+
+/* ✅ Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .sideBar {
+    width: 180px;
+    padding-left: 15px;
+  }
+
+  .side-links img {
+    width: 22px;
+    margin-right: 15px;
+  }
+
+  .hr-tag {
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sideBar {
+    position: fixed;
+    width: 60px;
+    padding-left: 10px;
+    overflow-y: auto;
+  }
+
+  .side-links img {
+    width: 20px;
+    margin-right: 0;
+  }
+
+  .side-links p,
+  .sideBar h3 {
+    display: none;
+  }
+
+  .hr-tag {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .sideBar {
+    display: none; /* Completely hide sidebar on very small screens */
+  }
+}
