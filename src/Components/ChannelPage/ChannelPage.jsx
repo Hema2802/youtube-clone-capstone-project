@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ChannelPage.css";
 import channel_page_banner from "../../assets/channel_page_banner.png";
 import { useNavigate } from "react-router-dom";
+import bannerChannel from '../../assets/bannerChannel.png'
 
 function ChannelPage() {
   const navigate = useNavigate();
@@ -10,6 +11,8 @@ function ChannelPage() {
   const [showUploadForm, setShowUploadForm] = useState(false);
   const [videos, setVideos] = useState([]);
   const [showVideos, setShowVideos] = useState(false);
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editedTitle, setEditedTitle] = useState("");
 
   useEffect(() => {
     const storedChannel = localStorage.getItem("myChannel");
@@ -46,11 +49,39 @@ function ChannelPage() {
   reader.readAsDataURL(file); // Converts to Base64
 };
 
+// delete option
+
+const handleDelete = (index) => {
+  const updated = videos.filter((_, i) => i !== index);
+  setVideos(updated);
+  localStorage.setItem("myVideos", JSON.stringify(updated));
+};
+
+const handleEdit = (index) => {
+  setEditingIndex(index);
+  setEditedTitle(videos[index].title);
+};
+
+const handleSaveEdit = () => {
+  const updated = [...videos];
+  updated[editingIndex].title = editedTitle;
+  setVideos(updated);
+  localStorage.setItem("myVideos", JSON.stringify(updated));
+  setEditingIndex(null);
+  setEditedTitle("");
+};
+
+const handleCancelEdit = () => {
+  setEditingIndex(null);
+  setEditedTitle("");
+};
+
+
 
   return (
     <>
       <div className="channel-page">
-        <img className="banner" src={channel_page_banner} alt="banner" />
+        <img className="banner" src={bannerChannel} alt="banner" />
 
         <div className="channel_details">
           <img className="channel-banner" src={channel.image} alt="" />
@@ -118,11 +149,31 @@ function ChannelPage() {
           <h3>Uploaded Videos</h3>
           <div className="video-grid">
             {videos.map((video, index) => (
-              <div key={index} className="video-card">
-                <video src={video.url} controls width="300" height="200" />
-                <p>{video.title}</p>
-              </div>
-            ))}
+  <div key={index} className="video-card">
+    <video src={video.url} controls width="300" height="200" />
+
+    {editingIndex === index ? (
+      <div className="edit-part">
+        <input
+          type="text"
+          value={editedTitle}
+          onChange={(e) => setEditedTitle(e.target.value)}
+        />
+        <button onClick={handleSaveEdit}>✅</button>
+        <button onClick={handleCancelEdit}>❌</button>
+      </div>
+    ) : (
+      <>
+        <p>{video.title}</p>
+        <div className="video-actions">
+          <button onClick={() => handleEdit(index)}>Edit ✏️</button>
+          <button onClick={() => handleDelete(index)}>Delete 🗑️</button>
+        </div>
+      </>
+    )}
+  </div>
+))}
+
           </div>
         </div>
       )}

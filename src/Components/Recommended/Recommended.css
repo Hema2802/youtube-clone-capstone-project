@@ -15,6 +15,10 @@
     gap: 10px;
     text-decoration: none;
     color: black;
+    background-color: lightgray;
+    border: 1px solid #979696;
+    padding: 10px 15px;
+    border-radius: 10px;
 }
 .side-video img{
     width: 160px;

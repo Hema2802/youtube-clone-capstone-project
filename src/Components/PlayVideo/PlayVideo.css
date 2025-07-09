@@ -3,9 +3,11 @@
 .video{
     width: 500px;
     height: 450px;
+    border-radius: 10px;
 }
 .playVideo{
-    flex-basis: 69%;
+    flex-basis: 66%;
+    /* margin-right: 20px; */
 }
 .playVideo video{
     width: 100%;
@@ -37,6 +39,8 @@
     color: lightgray;
     margin: 10px 0px;
 }
+
+    
 .publisher{
     display: flex;
     align-items: center;

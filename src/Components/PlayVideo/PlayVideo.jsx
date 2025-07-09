@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './PlayVideo.css';
 import axios from "axios";
-
 import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
@@ -115,7 +114,7 @@ if (!video) {
                 </div>
             </div>
 
-            <hr />
+            <hr/>
 
             <div className="publisher">
                 <img src={video.logoUrl} alt="channel" />
