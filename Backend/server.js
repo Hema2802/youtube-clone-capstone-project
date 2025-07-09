@@ -10,7 +10,7 @@ const app=new express();
 app.use(express.json())
 app.use(cors()); //cors middleware
 
-const PORT =3000;
+const PORT = 3000;
 app.listen(PORT,()=>{
     console.log(`Server is running successfully on PORT ${PORT} 🚀`)
 })
@@ -44,5 +44,6 @@ db.on("error",()=>{
 })
 
 routes(app);
-videoRoutes(app);
+
 userRoutes(app);
+videoRoutes(app);

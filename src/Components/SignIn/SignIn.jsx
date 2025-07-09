@@ -54,7 +54,7 @@ function SignIn({ onClose, onRegister }) {
         <div className="signin-modal">
             <div className="signin-box">
                 <button className="close-button" onClick={onClose}>✘</button>
-                <h2>Sign In</h2>
+                <h2>Login</h2>
                 <form className="signin-form" onSubmit={handleLogin}>
                     <label>Email</label>
                     <input

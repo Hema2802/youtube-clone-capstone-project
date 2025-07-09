@@ -1,8 +1,8 @@
 
 import React from "react";
 import "./Video.css"
-import PlayVideo from "../Components/PlayVideo/PlayVideo";
-import Recommended from "../Components/Recommended/Recommended";
+import PlayVideo from "../Components/PlayVideo/PlayVideo.jsx";
+import Recommended from "../Components/Recommended/Recommended.jsx";
 
 
 

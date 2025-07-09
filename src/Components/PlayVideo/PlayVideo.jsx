@@ -11,7 +11,7 @@ import women_profile from '../../assets/women_profile.png';
 import common_profile from '../../assets/common_profile.png';
 import edit_icon from '../../assets/edit_icon.png';
 import delete_icon from '../../assets/delete_icon.png';
-import Recommended from "../Recommended/Recommended";
+import Recommended from "../Recommended/Recommended.jsx";
 
 function PlayVideo() {
     const { videoId } = useParams();  // Get videoId from URL
@@ -22,19 +22,44 @@ function PlayVideo() {
     const [editingId, setEditingId] = useState(null);
     const [editedText, setEditedText] = useState("");
 
-    useEffect(() => {
-        // Fetch video details
-        const fetchVideo = async () => {
-            try {
-                const res = await axios.get(`http://localhost:3000/api/videos/${videoId}`);
-                setVideo(res.data);
-                setComments(res.data.comments || []); // assuming your video has a 'comments' array
-            } catch (err) {
-                console.error("Failed to load video", err);
-            }
-        };
-        fetchVideo();
-    }, [videoId]);
+   
+useEffect(() => {
+  const fetchVideo = async () => {
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+
+
+    if (!token) {
+      console.warn("No token found.");
+      return;
+    }
+
+    if (!videoId) {
+      console.warn("No videoId in URL.");
+      return;
+    }
+
+    try {
+      const res = await axios.get(`http://localhost:3000/api/videos/${videoId}`, {
+        headers: {
+          Authorization: `JWT ${token}`, // ✅ FIXED
+        },
+      });
+
+      setVideo(res.data);
+      setComments(res.data.comments || []);
+    } catch (err) {
+      console.error("Failed to load video", err);
+    }
+  };
+
+  fetchVideo();
+}, [videoId]);
+
+
+if (!video) {
+    return <div style={{ padding: "20px", color: "red" }}>Video not found or still loading...</div>;
+}
+
 
     const addComment = () => {
         if (!newName.trim() || !newComment.trim()) return;
@@ -125,8 +150,8 @@ function PlayVideo() {
             </div><br />
             <hr />
 
-            {comments.map((comment) => (
-                <div className="comment" key={comment.id}>
+            {comments.map((comment,index) => (
+                <div className="comment" key={`comment-${comment.id || index}`}>
                     <img src={common_profile} alt="user_profile" />
                     <div>
                         <h3>{comment.username || comment.name} <span>{comment.timestamp || comment.time}</span></h3>
@@ -161,7 +186,8 @@ function PlayVideo() {
             ))}
 
 
-            
+            {/* RIGHT: Recommended Section */}
+            {/* <Recommended />  */}
         </div>
     );
 }

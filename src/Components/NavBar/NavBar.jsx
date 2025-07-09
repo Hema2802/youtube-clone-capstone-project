@@ -140,11 +140,11 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
           {/* SignIn / SignOut Toggle */}
           {isLoggedIn ? (
             <button className="signin-btn" onClick={handleLogout}>
-              Sign Out
+              Logout
             </button>
           ) : (
             <button className="signin-btn" onClick={() => setShowSignIn(true)}>
-              Sign In
+              Login
             </button>
           )}
 

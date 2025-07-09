@@ -8,21 +8,43 @@ function Recommended() {
     const [videos, setVideos] = useState([]);
     const [currentVideo, setCurrentVideo] = useState(null);
 
-    useEffect(() => {
-        const fetchVideos = async () => {
-            try {
-                const res = await axios.get("http://localhost:3000/api/videos");
-                setVideos(res.data);
 
-                const current = await axios.get(`http://localhost:3000/api/videos/${videoId}`);
-                setCurrentVideo(current.data);
-            } catch (err) {
-                console.error("Error fetching recommended videos", err);
-            }
-        };
+     useEffect(() => {
+  const fetchVideos = async () => {
+    try {
+      const token = localStorage.getItem("token") || sessionStorage.getItem("token");
 
-        fetchVideos();
-    }, [videoId]);
+      if (!token) {
+        console.warn("No token found. User might not be logged in.");
+        return;
+      }
+
+      const formattedToken = token.startsWith("JWT") ? token : `JWT ${token}`;
+
+      const res = await axios.get("http://localhost:3000/api/videos", {
+        headers: {
+          Authorization: formattedToken,
+        },
+      });
+
+      const current = await axios.get(`http://localhost:3000/api/videos/${videoId}`, {
+        headers: {
+          Authorization: formattedToken,
+        },
+      });
+
+      setVideos(res.data);
+      setCurrentVideo(current.data);
+    } catch (err) {
+      console.error("Error fetching recommended videos", err);
+    }
+  };
+
+  // ✅ Call it here
+  fetchVideos();
+}, [videoId]);
+
+
 
     const filteredVideos = videos.filter(
         (v) => v._id !== videoId && v.category === currentVideo?.category

@@ -57,7 +57,7 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
         }
     }, [isLoggedIn]);
 
-    // ✅ Filter videos by search or category
+    // Filter videos by search or category
     const filteredVideos = videos.filter((video) => {
         if (searchTriggered && searchTerm.trim() !== "") {
             const lowerSearch = searchTerm.toLowerCase();

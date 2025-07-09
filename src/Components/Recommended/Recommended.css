@@ -39,7 +39,7 @@
 
 
 
-/* ✅ Responsive Media Queries */
+/*  Responsive Media Queries */
 @media (max-width: 1024px) {
   .recommended {
     flex-basis: 100%;
