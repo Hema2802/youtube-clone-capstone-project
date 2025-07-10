@@ -81,7 +81,7 @@ const videoSchema = new mongoose.Schema({
       text: {
         type: String,
         required: true,
-        maxlength: 300
+        maxlength: 700
       },
       likes: {
         type: String,
