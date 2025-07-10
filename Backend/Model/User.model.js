@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 // created schema for users
 
 const userSchema = new mongoose.Schema({
+  
   fullName: {
     type: String,
     required: [true, "User name is required*"],
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
+// created a model for users
 const UserModel =mongoose.model("User", userSchema);
-
+// export the model
 export default UserModel;

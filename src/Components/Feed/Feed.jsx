@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react"; // React & Hooks
+import axios from "axios"; // For API requests
 import './Feed.css';
-import { Link } from "react-router-dom";
-import SubTitleBar from "../SubTitleBar/SubTitleBar";
+import { Link } from "react-router-dom"; // For routing to video pages
+import SubTitleBar from "../SubTitleBar/SubTitleBar"; // Category navigation bar
 
 function Feed({ sideBar, searchTerm, searchTriggered }) {
-    const [videos, setVideos] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [category, setCategory] = useState("All");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [videos, setVideos] = useState([]); // All videos fetched from API
+    const [loading, setLoading] = useState(true);  // UI loading state
+    const [category, setCategory] = useState("All");  // Selected category
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // Login status
 
     //  Check login status once when component mounts
     useEffect(() => {
@@ -55,7 +55,7 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
         if (isLoggedIn) {
             fetchVideos();
         }
-    }, [isLoggedIn]);
+    }, [isLoggedIn]); // Re-run only if login state changes
 
     // Filter videos by search or category
     const filteredVideos = videos.filter((video) => {
@@ -72,6 +72,8 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
 
     return (
         <>
+
+        {/* Handles both search and category filter */}
             {/* Pass category props to SubTitleBar */}
             <SubTitleBar category={category} setCategory={setCategory} />
 
@@ -81,6 +83,8 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
                         <h2>Welcome To My Youtube</h2>
                         <p>🔒 To access our exclusive video content, please sign in to your account.</p>
                     </div>
+
+                    // Displays while waiting for data
                 ) : loading ? (
                     <p>Loading videos...</p>
                 ) : (
@@ -111,5 +115,5 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
         </>
     );
 }
-
+// final export
 export default Feed;

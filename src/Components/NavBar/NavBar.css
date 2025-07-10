@@ -165,7 +165,7 @@ nav{
 }
 
 
-/* 🔻 Responsive for Tablets & Mobiles */
+/*  Responsive for Tablets & Mobiles */
 @media screen and (max-width: 1024px) {
   .middle_part .search-box input {
     width: 300px;
@@ -193,7 +193,7 @@ nav{
   }
 }
 
-/* 🔻 Responsive for Mobile Devices */
+/*  Responsive for Mobile Devices */
 @media screen and (max-width: 768px) {
   nav {
     flex-direction: column;
@@ -239,7 +239,7 @@ nav{
   }
 }
 
-/* 🔻 Very Small Devices */
+/*  Very Small Devices */
 @media screen and (max-width: 480px) {
   .middle_part .search-box input {
     width: 180px;

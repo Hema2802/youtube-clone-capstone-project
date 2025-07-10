@@ -10,15 +10,15 @@ import CreateAccount from "../CreateAccount/CreateAccount";
 import { useNavigate} from 'react-router-dom'
 
 function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
-  const [showSignIn, setShowSignIn] = useState(false);
+  const [showSignIn, setShowSignIn] = useState(false); // Modal toggle
   const [showCreateAccount, setShowCreateAccount] = useState(false);
-  const [userInitial, setUserInitial] = useState("");
+  const [userInitial, setUserInitial] = useState(""); // Initials to show in circle
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
-  const [searchInput, setSearchInput] = useState("");
-  const [showUserMenu, setShowUserMenu] = useState(false);
-   const navigate = useNavigate();
+  const [searchInput, setSearchInput] = useState(""); // Search bar input
+  const [showUserMenu, setShowUserMenu] = useState(false); // For dropdown
+   const navigate = useNavigate(); //navigation
 
   // Function to update initials
   const updateUserInitial = () => {
@@ -38,6 +38,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
   };
 
   //  On load or after login modal
+  // ensures initials are updated after login.
   useEffect(() => {
     setIsLoggedIn(localStorage.getItem("isLoggedIn") === "true");
     updateUserInitial();
@@ -49,7 +50,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
     setIsLoggedIn(false);
     setUserInitial("");
 
-    // ✅ Notify other components like Feed.jsx
+    //  Notify other components like Feed.jsx
   window.dispatchEvent(new Event("storage"));
   };
 
@@ -66,7 +67,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
   return () => document.removeEventListener("click", handleClickOutside);
 }, []);
 
-
+// default notification count
   const notificationCount = 24;
 
   return (
@@ -90,7 +91,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
         {/* Middle */}
         <div className="middle_part flex-div">
           <div className="search-box">
-
+{/* Search term is only triggered on clicking search icon */}
             <input 
                    type="text" 
                    placeholder="Search" 
@@ -217,5 +218,5 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
     </>
   );
 }
-
+//  final export
 export default NavBar;

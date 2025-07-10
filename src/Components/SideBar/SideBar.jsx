@@ -26,13 +26,15 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
     
     return(
         <>
+        {/* sidebar visibility */}
           <div className={`sideBar ${sideBar? "": "small-sidebar"}`}>
             <div className="sortcut-links">
                 <div className="side-links" onClick={() => {
-                    setCategory("All"); 
+                    setCategory("All");   //default category set
                     setSearchTerm("");
                     setSearchTriggered(false);
                 }}>
+                    {/* icon with name */}
                     <img src={home_icon} alt="Home icon " /> <p>Home</p>
                 </div>
 
@@ -53,6 +55,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
             
             
             <div className="sortcut-links"><br/>
+            {/* you >> */}
                <h3>You ≫</h3><br/>
 
                <div className="side-links">
@@ -79,7 +82,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
             </div>
 
             <hr className="hr-tag"/>
-
+{/* explore part */}
             <div className="sortcut-links"><br/>
                 <h3>Explore ≫</h3><br/>
                 <div className="side-links">
@@ -115,7 +118,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
 
             <hr className="hr-tag"/>
             <br/>
-
+{/* subscription */}
             <div className="sortcut-links">
                 <h3>Subscriptions ≫ </h3><br/>
 
@@ -140,7 +143,7 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
 
             <hr className="hr-tag"/>
             <br/>
-
+{/* settings */}
             <div className="sortcut-links">
                 <div className="side-links">
                     <img src={settings}   alt="settings"/> <p>Settings</p>
@@ -165,5 +168,5 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
         </>
     )
 }
-
+// final export
 export default SideBar;

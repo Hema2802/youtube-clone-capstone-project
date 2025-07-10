@@ -1,6 +1,6 @@
-
+// import part
 import mongoose from "mongoose";
-
+// schema with validation
 const videoSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -70,6 +70,7 @@ const videoSchema = new mongoose.Schema({
     type: String,
     default: () => new Date().toISOString().split('T')[0]  
   },
+  // comments part
   comments: [
     {
       username: {
@@ -96,7 +97,7 @@ const videoSchema = new mongoose.Schema({
     }
   ]
 });
-
+// video model
 const videoModel = mongoose.model("videos", videoSchema);
-
+// export
 export default videoModel;

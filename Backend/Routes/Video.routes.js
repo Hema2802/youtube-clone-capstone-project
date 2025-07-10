@@ -1,7 +1,9 @@
-
+// importing
 import { createVideo, deleteVideo, fetchVideos, searchVideo, updateVideoData } from "../Controller/Video.controller.js";
 import { VerifyToken } from "../Middleware/VerifyToken.js";
 
+
+// export the routes to post,get,put and delete
 export function routes(app) {
     app.post("/api/video",VerifyToken,createVideo);
     app.get("/api/videos",VerifyToken,fetchVideos);

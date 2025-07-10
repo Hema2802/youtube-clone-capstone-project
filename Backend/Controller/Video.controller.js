@@ -1,6 +1,8 @@
+// importing part
+
 import videoModel from "../Model/Video.model.js";
 
-
+// function for video
 export function createVideo(req,res){
     const{title,thumbnailUrl,logoUrl,channelId,views,period,category,categoryId,description,uploader,subscription,likes,dislikes,uploadDate,comments,videoUrl}=req.body;
 
@@ -22,7 +24,7 @@ export function createVideo(req,res){
         comments:comments,
         videoUrl:videoUrl
     }) 
-
+//   save and return
     newVideo.save().then(data =>{
         if(!data){
             return res.status(400).json({message:"Something went wrong 🤔"})
@@ -33,14 +35,16 @@ export function createVideo(req,res){
   
 }
 
-
+// fetch videos
 export function fetchVideos(req,res){
     videoModel.find().then((data)=>{
         if(!data){
             return res.status(404).send("Somthing went wrong");
         }
+        // if successfully fetch the videos
         res.send(data)
     }).catch((err)=>{
+        // if error comes
         res.status(401).json({message:"Internal server error" || err.message})
     })
 }
@@ -92,14 +96,16 @@ export async function deleteVideo(req,res){
     
 }
 
+// to fetch searched video
 export async function searchVideo(req,res){
     const query = req.query.query;
-
+// try and catch method
   try {
     const results = await videoModel.find({
       title: { $regex: query, $options: "i" }  // Case-insensitive partial match
     });
     res.json(results);
+    // if get error and res
   } catch (error) {
     res.status(500).json({ error: "Search failed" });
   }

@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import './SignIn.css';
 
 function SignIn({ onClose, onRegister }) {
+    // store user input
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
+    // Prevents form from refreshing the page.
     const handleLogin = async (e) => {
         e.preventDefault();
 
+     // try and catch method
         try {
             const response = await fetch("http://localhost:3000/api/login", {
                 method: "POST",
@@ -16,7 +19,7 @@ function SignIn({ onClose, onRegister }) {
                 body: JSON.stringify({ email, password })
             });
 
-            const data = await response.json();
+            const data = await response.json();  //Parses the response JSON.
 
             if (response.ok) {
                 alert("✅ Login successful! Welcome back.");
@@ -54,9 +57,12 @@ function SignIn({ onClose, onRegister }) {
         <div className="signin-modal">
             <div className="signin-box">
                 <button className="close-button" onClick={onClose}>✘</button>
+                {/* handle login */}
                 <h2>Login</h2>
                 <form className="signin-form" onSubmit={handleLogin}>
+                    {/* user input */}
                     <label>Email</label>
+                    {/* email */}
                     <input
                         type="email"
                         value={email}
@@ -64,7 +70,7 @@ function SignIn({ onClose, onRegister }) {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
-
+{/* password */}
                     <label>Password</label>
                     <input
                         type="password"
@@ -76,6 +82,7 @@ function SignIn({ onClose, onRegister }) {
 
                     <div className="checkbox-sec">
                         <label>
+                            {/* remmembrance checking */}
                             <input
                                 type="checkbox"
                                 checked={rememberMe}
@@ -83,12 +90,15 @@ function SignIn({ onClose, onRegister }) {
                             />
                             Remember&nbsp;&nbsp;me
                         </label>
+                        {/* static forgot password */}
                         <span className="forgot-password">
                             <a href="#">Forgot Password?</a></span>
                     </div>
                      <br/>
+                     {/* login button */}
                     <button type="submit" className="login-btn">Login</button>
-
+                     
+                     {/* register for new users */}
                     <p className="register-link">
                         Don’t have an account? <br /><br />
                         <a href="#" onClick={(e) => { e.preventDefault(); onRegister(); }}>
@@ -100,5 +110,5 @@ function SignIn({ onClose, onRegister }) {
         </div>
     );
 }
-
+// final export the component
 export default SignIn;

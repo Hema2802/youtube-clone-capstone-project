@@ -5,7 +5,7 @@ import Feed from "../Components/Feed/Feed";
 
 function Home({sideBar, searchTerm, setSearchTerm, searchTriggered, setSearchTriggered }){
 
-    const [category,setCategory] = useState("All");
+    const [category,setCategory] = useState("All");  // category
 
      
     return (
@@ -34,5 +34,5 @@ function Home({sideBar, searchTerm, setSearchTerm, searchTriggered, setSearchTri
     )
 }
 
-
+// final export component
 export default Home;

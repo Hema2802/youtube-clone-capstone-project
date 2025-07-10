@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";  // for detect id
 import './PlayVideo.css';
-import axios from "axios";
+import axios from "axios"; // securely fetch video data from your backend
 import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
@@ -14,14 +14,14 @@ import Recommended from "../Recommended/Recommended.jsx";
 
 function PlayVideo() {
     const { videoId } = useParams();  // Get videoId from URL
-    const [video, setVideo] = useState(null);
-    const [comments, setComments] = useState([]);
-    const [newComment, setNewComment] = useState("");
-    const [newName, setNewName] = useState("");
-    const [editingId, setEditingId] = useState(null);
-    const [editedText, setEditedText] = useState("");
+    const [video, setVideo] = useState(null);   // Holds video details
+    const [comments, setComments] = useState([]); // Comments array
+    const [newComment, setNewComment] = useState(""); // New comment text
+    const [newName, setNewName] = useState(""); // New commenter name
+    const [editingId, setEditingId] = useState(null); // Currently editing comment ID
+    const [editedText, setEditedText] = useState(""); // Updated comment text
 
-   
+//    token-based authorization to protect the video route
 useEffect(() => {
   const fetchVideo = async () => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
@@ -59,7 +59,7 @@ if (!video) {
     return <div style={{ padding: "20px", color: "red" }}>Video not found or still loading...</div>;
 }
 
-
+// Adds a comment at the top of the list, with a dummy timestamp and ID
     const addComment = () => {
         if (!newName.trim() || !newComment.trim()) return;
         const newComm = {
@@ -77,7 +77,7 @@ if (!video) {
     const deleteComment = (id) => {
         setComments(comments.filter(comment => comment.id !== id));
     };
-
+// Enables inline editing of comments. Cancels automatically if save is pressed.
     const editComment = (id) => {
         const toEdit = comments.find(c => c.id === id);
         setEditingId(id);
@@ -94,19 +94,21 @@ if (!video) {
         setEditingId(null);
         setEditedText("");
     };
-
+// loading visibility
     if (!video) {
         return <div>Loading video...</div>;
     }
     
     return (
         <div className="playVideo">
+            {/* playing video */}
             <video src={video.videoUrl} controls autoPlay muted className="video" />
             <h3>{video.title}</h3>
 
             <div className="play-video-info">
                 <p>{video.views} Views &bull; {video.period}</p>
                 <div>
+                    {/* like,dislike,share and save icons */}
                     <span><img src={like} alt="like icon" /> {video.likes} </span>
                     <span><img src={dislike} alt="dislike icon" /> {video.dislikes} </span>
                     <span><img src={share} alt="share icon" /> Share </span>
@@ -115,13 +117,14 @@ if (!video) {
             </div>
 
             <hr/>
-
+{/* channel details */}
             <div className="publisher">
                 <img src={video.logoUrl} alt="channel" />
                 <div>
                     <p>{video.uploader}</p>
                     <span className="subs_count">{video.subscription} Subscribers</span>
                 </div>
+                {/* subscribe button */}
                 <button>Subscribe</button>
             </div>
 
@@ -132,7 +135,7 @@ if (!video) {
                 </div>
                 <h4>{comments.length} comments</h4>
             </div>
-
+{/* comment section */}
             <div className="add-comment">
                 <input
                     type="text"
@@ -148,7 +151,7 @@ if (!video) {
                 <button onClick={addComment}>Post</button>
             </div><br />
             <hr />
-
+{/* display all comments */}
             {comments.map((comment,index) => (
                 <div className="comment" key={`comment-${comment.id || index}`}>
                     <img src={common_profile} alt="user_profile" />
@@ -185,11 +188,10 @@ if (!video) {
             ))}
 
 
-            {/* RIGHT: Recommended Section */}
-            {/* <Recommended />  */}
+            
         </div>
     );
 }
-
+// final export
 export default PlayVideo;
 

@@ -17,10 +17,10 @@ export function VerifyToken(req,res,next){
             }
             // console the verified token
             console.log(verifiedToken,'verifiedToken') 
-            
+            // find token using id
            UserModel.findById(verifiedToken.id)
            .then((user)=>{
-
+// console user
             console.log(user,"user");
             req.user=user;
             next();
@@ -33,7 +33,7 @@ export function VerifyToken(req,res,next){
            })
 });
     }
-
+// if token is not found
     else{
         return res.status(404).json({message:"Token not found"});
     }

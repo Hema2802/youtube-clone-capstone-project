@@ -99,7 +99,7 @@
 }
 
 
-/* 🔻 Tablet screens (768px to 1024px) */
+/*  Tablet screens (768px to 1024px) */
 @media screen and (max-width: 1024px) {
   .feed {
     margin-left: 20px;
@@ -122,7 +122,7 @@
   }
 }
 
-/* 🔻 Mobile screens (480px to 768px) */
+/*  Mobile screens (480px to 768px) */
 @media screen and (max-width: 768px) {
   .feed {
     padding: 15px;
@@ -167,7 +167,7 @@
   }
 }
 
-/* 🔻 Extra Small Devices (≤ 480px) */
+/* Extra Small Devices (≤ 480px) */
 @media screen and (max-width: 480px) {
   .feed {
     padding: 10px;

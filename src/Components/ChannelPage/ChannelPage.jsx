@@ -1,3 +1,5 @@
+// State initialization for channel, videos, UI control
+
 import React, { useEffect, useState } from "react";
 import "./ChannelPage.css";
 import channel_page_banner from "../../assets/channel_page_banner.png";
@@ -14,6 +16,8 @@ function ChannelPage() {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedTitle, setEditedTitle] = useState("");
 
+  // Retrieve persisted channel and videos from localStorage
+  
   useEffect(() => {
     const storedChannel = localStorage.getItem("myChannel");
     const savedVideos = localStorage.getItem("myVideos");
@@ -38,6 +42,7 @@ function ChannelPage() {
 
   const reader = new FileReader();
   reader.onloadend = () => {
+    // Convert video to base64 and store
     const newVideo = { title, url: reader.result };
     const updatedVideos = [...videos, newVideo];
     setVideos(updatedVideos);
@@ -45,7 +50,7 @@ function ChannelPage() {
     setShowUploadForm(false);
     setShowVideos(true);
   };
-
+// Encode video
   reader.readAsDataURL(file); // Converts to Base64
 };
 
@@ -56,12 +61,12 @@ const handleDelete = (index) => {
   setVideos(updated);
   localStorage.setItem("myVideos", JSON.stringify(updated));
 };
-
+// edit option
 const handleEdit = (index) => {
   setEditingIndex(index);
   setEditedTitle(videos[index].title);
 };
-
+// if make any edit -to perform save
 const handleSaveEdit = () => {
   const updated = [...videos];
   updated[editingIndex].title = editedTitle;
@@ -70,7 +75,7 @@ const handleSaveEdit = () => {
   setEditingIndex(null);
   setEditedTitle("");
 };
-
+// cancel option
 const handleCancelEdit = () => {
   setEditingIndex(null);
   setEditedTitle("");
@@ -81,11 +86,12 @@ const handleCancelEdit = () => {
   return (
     <>
       <div className="channel-page">
+        {/* banner for channel page */}
         <img className="banner" src={bannerChannel} alt="banner" />
 
         <div className="channel_details">
           <img className="channel-banner" src={channel.image} alt="" />
-
+{/* details about channel */}
           <div className="about_channel">
             <h2>
               {channel.name} <span style={{ fontSize: "16px" }}>✪</span>
@@ -98,8 +104,9 @@ const handleCancelEdit = () => {
             </p>
             <p>New videos every Tuesday and Friday 🎯</p>
             <p>6.00pm - 7.00pm</p>
-
+{/* subscribe button -static */}
             <button className="subs-btn">Subscribe</button>
+            {/* workable upload button-upload your videos */}
             <button
               className="subs-btn"
               onClick={() => setShowUploadForm(true)}
@@ -112,8 +119,11 @@ const handleCancelEdit = () => {
 
       <div>
         <div className="channel-navbar">
+          {/* Home button - navigate to home page */}
           <p onClick={() => navigate("/")}>Home</p>
+          {/* display uploaded content */}
           <p onClick={() => setShowVideos(true)}>Videos</p>
+          {/* static buttons */}
           <p>Sports</p>
           <p>Live</p>
           <p>PlayLists</p>
@@ -128,12 +138,14 @@ const handleCancelEdit = () => {
           
           <form onSubmit={handleUpload}>
             <h3>Upload Your Video Content</h3>
+            {/* input */}
             <input
               type="text"
               name="title"
               placeholder="Video Title"
               required
             />
+            {/* upload options */}
             <input type="file" name="video" accept="video/*" required />
             <button type="submit">Upload</button>
             <button type="button" onClick={() => setShowUploadForm(false)}>
@@ -149,21 +161,25 @@ const handleCancelEdit = () => {
           <h3>Uploaded Videos</h3>
           <div className="video-grid">
             {videos.map((video, index) => (
+              // video card visibility
   <div key={index} className="video-card">
     <video src={video.url} controls width="300" height="200" />
 
     {editingIndex === index ? (
       <div className="edit-part">
+        {/* if make any edit */}
         <input
           type="text"
           value={editedTitle}
           onChange={(e) => setEditedTitle(e.target.value)}
         />
+        {/* save and cancel option */}
         <button onClick={handleSaveEdit}>✅</button>
         <button onClick={handleCancelEdit}>❌</button>
       </div>
     ) : (
       <>
+      {/* edit and delete options-workable */}
         <p>{video.title}</p>
         <div className="video-actions">
           <button onClick={() => handleEdit(index)}>Edit ✏️</button>

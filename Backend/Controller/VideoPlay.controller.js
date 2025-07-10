@@ -4,6 +4,7 @@ import videoModel from "../Model/Video.model.js";
 
 // GET /api/videos
 export const getAllVideos = async (req, res) => {
+    // try and catch method
     try {
         const videos = await videoModel.find();
         res.json(videos);
@@ -14,6 +15,7 @@ export const getAllVideos = async (req, res) => {
 
 // GET /api/videos/:id
 export const getVideoById = async (req, res) => {
+    // try and catch method
     try {
         const video = await videoModel.findById(req.params.id);
         if (!video) return res.status(404).json({ error: "Video not found" });

@@ -14,9 +14,9 @@ import ChannelPage from './Components/ChannelPage/ChannelPage.jsx';
 
 function App() {
   
-const [sideBar,setSideBar] = useState(true);
-const [searchTerm, setSearchTerm] = useState("");
-const [searchTriggered, setSearchTriggered] = useState(false);
+const [sideBar,setSideBar] = useState(true);  //Controls the visibility of the sidebar (true = visible)
+const [searchTerm, setSearchTerm] = useState("");   //Stores the current search input.
+const [searchTriggered, setSearchTriggered] = useState(false); //whether a search was actually triggered
   return (
     <>
       <NavBar 
@@ -47,7 +47,7 @@ const [searchTriggered, setSearchTriggered] = useState(false);
     </>
   )
 }
-
+// export part
 export default App;
 
 

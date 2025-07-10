@@ -61,7 +61,7 @@
 
 
 
-/* ✅ Responsive Breakpoints */
+/*  Responsive Breakpoints */
 @media (max-width: 1024px) {
   .sideBar {
     width: 180px;

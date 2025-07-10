@@ -1,26 +1,26 @@
 import React, { useState } from "react";
 import "./CreateChannel.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";  //Hook for navigation
 
 function CreateChannel() {
-  const [channelImage, setChannelImage] = useState(null);
-  const [channelName, setChannelName] = useState("");
-  const [channelHandle, setChannelHandle] = useState("");
+  const [channelImage, setChannelImage] = useState(null); //Stores the image URL (preview)
+  const [channelName, setChannelName] = useState("");        //Stores entered channel name
+  const [channelHandle, setChannelHandle] = useState(""); //Stores entered channel handle
 
-const navigate = useNavigate();
+const navigate = useNavigate();   //Hook to navigate programmatically
 
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0];   //Get first selected file
     if (file) {
-      setChannelImage(URL.createObjectURL(file));
+      setChannelImage(URL.createObjectURL(file));   //Create preview URL
     }
   };
 
   
 
   const handleSubmit = (e) => {
-  e.preventDefault();
-
+  e.preventDefault();   //Prevent form from reloading the page
+// form data into a single object.
   const channelData = {
     name: channelName,
     handle: channelHandle,
@@ -36,13 +36,14 @@ const navigate = useNavigate();
 
 
   const removeImage = () => {
-  setChannelImage(null);
+  setChannelImage(null);   //Reset the image preview
 };
 
   return (
     <div className="create-channel-container">
       <h2>Create Your Channel</h2>
       <img  className="channel-user"
+      // Displays selected image or a default profile icon.
             src={channelImage ||  "https://img.icons8.com/?size=100&id=492ILERveW8G&format=png&color=000000"}
             alt="user"
               />
@@ -101,5 +102,5 @@ const navigate = useNavigate();
     </div>
   );
 }
-
+// export created channel
 export default CreateChannel;
