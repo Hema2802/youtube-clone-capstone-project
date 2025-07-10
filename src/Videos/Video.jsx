@@ -6,7 +6,7 @@ import Recommended from "../Components/Recommended/Recommended.jsx";
 
 
 
-function Video(){
+function Video({ sideBar, setSideBar }){
     return(
         <>
 
@@ -14,7 +14,7 @@ function Video(){
         - display playying video and recommended videos */}
            <div className="play-container">
 
-                <PlayVideo/>
+                <PlayVideo sideBar={sideBar} setSideBar={setSideBar}/>
                 <Recommended/>
            </div>
         

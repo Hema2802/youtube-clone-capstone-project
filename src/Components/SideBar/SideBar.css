@@ -9,6 +9,7 @@
   padding-top: 130px;
   overflow-y: auto;
   transition: all 0.3s ease-in-out;
+  z-index: 1;
 }
 
 /* Side links */

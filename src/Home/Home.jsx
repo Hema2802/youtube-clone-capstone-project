@@ -12,6 +12,7 @@ function Home({sideBar, searchTerm, setSearchTerm, searchTriggered, setSearchTri
         <>
             <SideBar 
                     sideBar={sideBar} 
+                
                     category={category} 
                     setCategory={setCategory} 
                     setSearchTerm={setSearchTerm}

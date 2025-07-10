@@ -11,8 +11,9 @@ import common_profile from '../../assets/common_profile.png';
 import edit_icon from '../../assets/edit_icon.png';
 import delete_icon from '../../assets/delete_icon.png';
 import Recommended from "../Recommended/Recommended.jsx";
+import SideBar from "../SideBar/SideBar.jsx";
 
-function PlayVideo() {
+function PlayVideo({ sideBar, setSideBar }) {
     const { videoId } = useParams();  // Get videoId from URL
     const [video, setVideo] = useState(null);   // Holds video details
     const [comments, setComments] = useState([]); // Comments array
@@ -100,7 +101,12 @@ if (!video) {
     }
     
     return (
+<>
+        {sideBar && (
+        <SideBar sideBar={sideBar} setSideBar={setSideBar}  category={"All"} setCategory={() => {}} />
+      )}
         <div className="playVideo">
+           
             {/* playing video */}
             <video src={video.videoUrl} controls autoPlay muted className="video" />
             <h3>{video.title}</h3>
@@ -190,6 +196,7 @@ if (!video) {
 
             
         </div>
+        </>
     );
 }
 // final export

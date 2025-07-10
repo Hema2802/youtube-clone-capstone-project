@@ -106,6 +106,7 @@ function NavBar({ setSideBar, setSearchTerm, setSearchTriggered }) {
                  onClick={() => {
                                 setSearchTerm(searchInput);
                                 setSearchTriggered(true);
+                                setSearchInput(""); //  Clear the input field after search
                }} />
 
           </div>

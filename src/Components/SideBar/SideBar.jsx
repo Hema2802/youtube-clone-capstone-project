@@ -19,10 +19,13 @@ import podcast from '../../assets/podcast.png'
 import trending from '../../assets/trending.png'
 import shop from '../../assets/shop.png'
 import settings from '../../assets/settings.png'
+import { useNavigate } from "react-router-dom";
 
 
 
-function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTriggered}){
+function SideBar({sideBar,setSideBar,category = "All", setCategory =()=>{}, setSearchTerm = () =>{}, setSearchTriggered = ()=>{}}){
+
+    const navigate = useNavigate();
     
     return(
         <>
@@ -33,6 +36,8 @@ function SideBar({sideBar,category, setCategory, setSearchTerm, setSearchTrigger
                     setCategory("All");   //default category set
                     setSearchTerm("");
                     setSearchTriggered(false);
+                    setSideBar(false);
+                    navigate("/");
                 }}>
                     {/* icon with name */}
                     <img src={home_icon} alt="Home icon " /> <p>Home</p>

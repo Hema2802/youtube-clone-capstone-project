@@ -40,6 +40,11 @@ function ChannelPage() {
   const title = e.target.title.value;
   const file = e.target.video.files[0];
 
+  if (!file) {
+    alert("No file selected!");
+    return;
+  }
+
   const reader = new FileReader();
   reader.onloadend = () => {
     // Convert video to base64 and store
@@ -49,6 +54,11 @@ function ChannelPage() {
     localStorage.setItem("myVideos", JSON.stringify(updatedVideos));
     setShowUploadForm(false);
     setShowVideos(true);
+  };
+
+  reader.onerror = () => {
+    console.error("FileReader error", reader.error);
+    alert("Failed to read the video file.");
   };
 // Encode video
   reader.readAsDataURL(file); // Converts to Base64
@@ -147,6 +157,7 @@ const handleCancelEdit = () => {
             />
             {/* upload options */}
             <input type="file" name="video" accept="video/*" required />
+            {/* upload files with small size */}
             <button type="submit">Upload</button>
             <button type="button" onClick={() => setShowUploadForm(false)}>
               Cancel

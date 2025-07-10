@@ -29,16 +29,18 @@ const [searchTriggered, setSearchTriggered] = useState(false); //whether a searc
             <Route path="/" element={
                 <Home 
                      sideBar={sideBar} 
+                     
                      searchTerm={searchTerm} 
                      setSearchTerm={setSearchTerm}
                      searchTriggered={searchTriggered}
                      setSearchTriggered={setSearchTriggered}
                      
                      
+                     
                      />}  />
 
 
-            <Route path="/video/:categoryId/:videoId" element={<Video/>}/>
+            <Route path="/video/:categoryId/:videoId" element={<Video  sideBar={sideBar} setSideBar={setSideBar}/>}/>
 
             <Route path="/create-channel" element={<CreateChannel />} />
 
