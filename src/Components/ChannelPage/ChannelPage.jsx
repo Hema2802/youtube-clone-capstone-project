@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import "./ChannelPage.css";
-import channel_page_banner from "../../assets/channel_page_banner.png";
 import { useNavigate } from "react-router-dom";
 import bannerChannel from '../../assets/bannerChannel.png'
 
