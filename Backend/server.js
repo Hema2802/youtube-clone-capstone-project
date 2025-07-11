@@ -8,7 +8,8 @@ import { videoRoutes } from "./Routes/videoPlay.routes.js";
 
 const app=new express();
 app.use(express.json())
-app.use(cors()); //cors middleware
+app.use(cors()); 
+//cors middleware
 // server for running
 const PORT = 3000;
 app.listen(PORT,()=>{
