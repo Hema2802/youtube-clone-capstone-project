@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import "./ChannelPage.css";
 import { useNavigate } from "react-router-dom";
-import bannerChannel from '../../assets/bannerChannel.png'
+import bannerChannel from '../../assets/bannerChannel.jpg'
 
 function ChannelPage() {
   const navigate = useNavigate();
