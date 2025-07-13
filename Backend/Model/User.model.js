@@ -2,6 +2,8 @@
 
 import mongoose from 'mongoose';
 
+
+
 // created schema for users
 
 const userSchema = new mongoose.Schema({
@@ -22,7 +24,7 @@ const userSchema = new mongoose.Schema({
     required: [true, "Password is required*"],
     minlength: 3,
   },
-  
+ 
   createdAt: {
     type: Date,
     default: Date.now,
