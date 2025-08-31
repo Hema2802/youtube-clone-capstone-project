@@ -9,10 +9,14 @@ import { seedDB } from "./Seed.js";
 
 const app=new express();
 app.use(express.json())
-app.use(cors()); 
+app.use(cors(
+  {
+  origin: "*"
+}
+)); 
 //cors middleware
 // server for running
-const PORT = 5000;
+const PORT =process.env.PORT || 5000;
 app.listen(PORT,()=>{
     console.log(`Server is running successfully on PORT ${PORT} 🚀`)
 })
@@ -35,7 +39,7 @@ function requestLogger(req, res, next) {
 app.use(requestLogger);
 seedDB();
 
-mongoose.connect("mongodb://localhost:27017");
+mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/youtube_clone");
 const db=mongoose.connection;
 // db is successfully connected
 db.on("open",()=>{
