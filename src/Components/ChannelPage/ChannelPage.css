@@ -224,7 +224,27 @@ hr {
 .edit-part button:hover{
   background-color: rgb(97, 55, 248);
 }
+.front_channel{
+  text-align: center;
+  padding-top: 40px;
+  font-size: 22px;
+  font-weight: 500;
+  color: red;
+}
+.page_error{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
 
+.notFound_page{
+  width: 500px;
+  height: 300px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
 /*  Tablets (≤ 1024px) */
 @media screen and (max-width: 1024px) {
   .banner {

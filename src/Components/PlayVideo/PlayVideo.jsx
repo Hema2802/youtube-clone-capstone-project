@@ -39,7 +39,7 @@ useEffect(() => {
     }
 
     try {
-      const res = await axios.get(`http://localhost:3000/api/videos/${videoId}`, {
+      const res = await axios.get(`http://localhost:5000/api/videos/${videoId}`, {
         headers: {
           Authorization: `JWT ${token}`, // ✅ FIXED
         },

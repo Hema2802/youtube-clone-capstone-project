@@ -87,12 +87,12 @@ const videoSchema = new mongoose.Schema({
       likes: {
         type: String,
     // default: "",
-        required:true
+        // required:true
     
   },
       timestamp: {
         type: String,
-        required:true
+        //  required:true
       }
     }
   ]

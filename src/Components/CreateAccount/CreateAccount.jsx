@@ -1,7 +1,6 @@
 // Importing useState for form state management
 
 import React, { useState } from 'react';
-
 import './CreateAccount.css';
 
 function CreateAccount({ onClose, onLogin }) {
@@ -21,7 +20,7 @@ function CreateAccount({ onClose, onLogin }) {
         }
 // request to your /api/register endpoint using fetch
         try {
-            const response = await fetch("http://localhost:3000/api/register", {
+            const response = await fetch("http://localhost:5000/api/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

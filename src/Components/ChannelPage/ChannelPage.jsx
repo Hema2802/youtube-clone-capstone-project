@@ -31,7 +31,18 @@ function ChannelPage() {
   }, []);
 
   if (!channel) {
-    return <p>No channel found. Please create one.</p>;
+    return (
+          <>
+          <div className="page_error">
+            
+            <p className="front_channel">No channel found. Please create one.</p>;
+            <img className="notFound_page" src="https://cdn.dribbble.com/userupload/21619919/file/original-e0c715c2ebdea828daed8c8cc53330e2.gif" alt="gif"/>
+
+            </div>
+
+          </>  
+    )
+    
   }
 
   const handleUpload = (e) => {

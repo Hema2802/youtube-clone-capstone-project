@@ -5,13 +5,14 @@ import { routes } from "./Routes/Video.routes.js";
 import cors from 'cors'
 import { userRoutes } from "./Routes/User.routes.js";
 import { videoRoutes } from "./Routes/videoPlay.routes.js";
+import { seedDB } from "./Seed.js";
 
 const app=new express();
 app.use(express.json())
 app.use(cors()); 
 //cors middleware
 // server for running
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT,()=>{
     console.log(`Server is running successfully on PORT ${PORT} 🚀`)
 })
@@ -32,6 +33,7 @@ function requestLogger(req, res, next) {
 // Database replaced with array-user data
 
 app.use(requestLogger);
+seedDB();
 
 mongoose.connect("mongodb://localhost:27017");
 const db=mongoose.connection;

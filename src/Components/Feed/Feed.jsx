@@ -39,7 +39,7 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
             }
 
             try {
-                const res = await axios.get("http://localhost:3000/api/videos", {
+                const res = await axios.get("http://localhost:5000/api/videos", {
                     headers: {
                         Authorization: `JWT ${token}` // match your backend
                     }
