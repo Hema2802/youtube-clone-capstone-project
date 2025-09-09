@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import { routes } from "./Routes/Video.routes.js";
 import cors from 'cors'
 import { userRoutes } from "./Routes/User.routes.js";
-import { videoRoutes } from "./Routes/videoPlay.routes.js";
+import { videoRoutes } from "./Routes/VideoPlay.routes.js";
 import { seedDB } from "./Seed.js";
 
 const app=new express();
