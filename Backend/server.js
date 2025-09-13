@@ -37,20 +37,24 @@ function requestLogger(req, res, next) {
 // Database replaced with array-user data
 
 app.use(requestLogger);
-seedDB();
-
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/youtube_clone");
-const db=mongoose.connection;
-// db is successfully connected
-db.on("open",()=>{
-    console.log("DB connected ✅")
-});
-// if failed to connect
-db.on("error",()=>{
-    console.log("DB connection Failed ❌")
-})
 
 // routes calling
 routes(app);
 userRoutes(app);
 videoRoutes(app);
+
+const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017/youtube_clone";
+
+mongoose
+  .connect(MONGO_URI)
+  .then(async () => {
+    console.log("DB connected ✅");
+
+    // ✅ Only seed after successful connection
+    await seedDB();
+  })
+  .catch((err) => {
+    console.error("DB connection Failed ❌", err);
+  });
+
+ 
