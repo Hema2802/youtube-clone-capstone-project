@@ -20,7 +20,7 @@ function CreateAccount({ onClose, onLogin }) {
         }
 // request to your /api/register endpoint using fetch
         try {
-            const response = await fetch("http://localhost:5000/api/register", {
+            const response = await fetch("https://youtube-clone-capstone-project-backend-14.onrender.com/api/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

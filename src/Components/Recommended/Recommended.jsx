@@ -21,13 +21,13 @@ function Recommended() {
 // checked whether it starts with JWT
       const formattedToken = token.startsWith("JWT") ? token : `JWT ${token}`;
 // Fetches all videos from the backend.
-      const res = await axios.get("http://localhost:5000/api/videos", {
+      const res = await axios.get("https://youtube-clone-capstone-project-backend-14.onrender.com/api/videos", {
         headers: {
           Authorization: formattedToken,
         },
       });
 
-      const current = await axios.get(`http://localhost:5000/api/videos/${videoId}`, {
+      const current = await axios.get(`https://youtube-clone-capstone-project-backend-14.onrender.com/api/videos/${videoId}`, {
         headers: {
           Authorization: formattedToken,
         },
