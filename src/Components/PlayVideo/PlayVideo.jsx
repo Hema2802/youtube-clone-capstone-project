@@ -39,7 +39,7 @@ useEffect(() => {
     }
 
     try {
-      const res = await axios.get(`https://youtube-clone-capstone-project-backend-15.onrender.com/api/videos/${videoId}`, {
+      const res = await axios.get(`https://youtube-clone-capstone-project-backend-16.onrender.com/api/videos/${videoId}`, {
         headers: {
           Authorization: `JWT ${token}`, // ✅ FIXED
         },
