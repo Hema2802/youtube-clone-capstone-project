@@ -1656,14 +1656,14 @@ const dummyData = [
 ]
 
 // insertMany
-
-export async function seedDB() {
+export async function seedDB(force = false) {
   try {
     const count = await videoModel.countDocuments();
 
-    if (count === 0) {
+    if (force || count === 0) {
+      await videoModel.deleteMany({});
       await videoModel.insertMany(dummyData);
-      console.log("✅ DB seeded with initial videos");
+      console.log("✅ DB seeded (forced or empty collection)");
     } else {
       console.log("⚡ DB already has videos, skipped seeding");
     }

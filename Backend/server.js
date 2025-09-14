@@ -51,7 +51,7 @@ mongoose
     console.log("DB connected ✅");
 
     // ✅ Only seed after successful connection
-    await seedDB();
+    await seedDB(true);
   })
   .catch((err) => {
     console.error("DB connection Failed ❌", err);
