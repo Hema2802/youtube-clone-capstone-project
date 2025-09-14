@@ -107,8 +107,8 @@ const dummyData = [
     {
         // 4
         title : "We Are Not SAFE?! 😨 | Madan Gowri | MG Squad 🖖",
-        thumbnailUrl : "/public/image4.jpg",
-        videoUrl : "/public/video21.mp4",     
+        thumbnailUrl : "/image4.jpg",
+        videoUrl : "/video21.mp4",     
         description : "In this video, Madan Gowri explains the top 15 powerful points shared by Geoffrey Hinton, the Godfather of AI. From AI replacing routine jobs to its role in cybersecurity and the future of work and several jobs, this video covers everything about how artificial intelligence is changing our world. Will AI think better than humans? What happens to elections, the digital world, and jobs by 2055? Can AI develop on its own? MG breaks it down in Tamil, including how AI and humans might face off in the coming years.",
         channelId : "ch_52334",
         uploader : "Madhan Gowri",
