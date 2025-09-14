@@ -39,7 +39,7 @@ function Feed({ sideBar, searchTerm, searchTriggered }) {
             }
 
             try {
-                const res = await axios.get("https://youtube-clone-capstone-project-backend-14.onrender.com/api/videos", {
+                const res = await axios.get("https://youtube-clone-capstone-project-backend-15.onrender.com/api/videos", {
                     headers: {
                         Authorization: `JWT ${token}` // match your backend
                     }
